@@ -10,7 +10,7 @@ function App() {
         text={"JOIN"}
         subText={"NOW!"}
         bgColor={"bg-gradient-to-r from-customColors-lightPurple to-customColors-offWhite"}
-        className={'text-xl w-64 h-14 shadow-sm shadow-black'}
+        className={'font-gruppo text-xl w-64 h-14 shadow-sm shadow-black'}
         round={false}
       />
     </div>
