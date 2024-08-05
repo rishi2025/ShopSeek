@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend:{
+      fontFamily: {
+        gruppo: ['"Gruppo"', 'sans-serif'],
+      },
       colors:{
         customColors:{
           'lightPurple': '#8E5AD0',
