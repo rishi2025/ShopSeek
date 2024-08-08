@@ -1,17 +1,57 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import ShopSeekLogo from "../Images/ShopSeekLogo.png";
+import Logo from "./Logo";
+import { Container, Signup } from "../../../Blogging_Platform/src/components";
 
 function Header() {
-    return (
-        <div>
-            <Button
-                text={"SIGN IN!"}
-                textColor={'text-customColors-lightPurple'}
-                bgColor={'bg-white'}
-                className='shadow-sm shadow-black'
-                round={false}
-            />
-        </div>
-    )
-}
+    // const navigate = useNavigate();
 
-export default Header
+    const navItems = [
+        {
+            name: 'Home',
+        },
+        {
+            name: "About",
+        },
+        {
+            name: "Contact Us",
+        },
+        {
+            name: "Sign Up",
+        },
+    ];
+
+    return (
+        <header className="py-4 shadow bg-inherit backdrop-blur-sm text-black rounded-xl fixed z-10 w-full">
+            <Container>
+                <nav className="flex">
+                    <div className="mr-4 text-black">
+                        {/* <Link to="/"> */}
+                            <Logo src={ShopSeekLogo} width="50px" className="rounded-xl" company="ShopSeek"/>
+                        {/* </Link> */}
+                    </div>
+
+                    <ul className="flex ml-auto">
+                        {navItems.map((item) => 
+                            (
+                                <li key={item.name}>
+                                    <button
+                                        // onClick={() => navigate(item.slug)}
+                                        className={`inline-bock px-6 py-2 font-gruppo duration-200 ${item.name === "Sign Up" ? "bg-customColors-offWhite" : null} hover:border-b-2 hover:border-purple-950 hover:text-purple-950 hover:transform hover:-translate-y-1`}
+                                    >
+                                        {item.name}
+                                    </button>
+                                </li>
+                            )
+                        )}
+                    </ul>
+
+                </nav>
+            </Container>
+        </header>
+    )
+};
+
+export default Header;

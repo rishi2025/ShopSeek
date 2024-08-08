@@ -1,19 +1,16 @@
 import React from 'react';
 import './App.css';
-import Button from './components/Button.jsx';
+import Home from './pages/Home';
+import {Header, Footer, Container} from './components/mainComponent.jsx';
 
 function App() {
 
   return (
-    <div>
-      <Button
-        text={"JOIN"}
-        subText={"NOW!"}
-        bgColor={"bg-gradient-to-r from-customColors-lightPurple to-customColors-offWhite"}
-        className={'font-gruppo text-xl w-64 h-14 shadow-sm shadow-black'}
-        round={false}
-      />
-    </div>
+    <Container className={'bg-gradient-to-r from-customColors-radialPurpleL to-customColors-radialPurpleD min-h-screen'} px='px-0'>
+      <Header />
+      <Home />
+      <Footer />
+    </Container>
   )
 }
 
