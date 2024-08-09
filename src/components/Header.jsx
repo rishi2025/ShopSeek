@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 import ShopSeekLogo from "../Images/ShopSeekLogo.png";
 import Logo from "./Logo";
-import { Container, Signup } from "../../../Blogging_Platform/src/components";
+import {Container} from "./mainComponent.jsx"
 
 function Header() {
     // const navigate = useNavigate();
