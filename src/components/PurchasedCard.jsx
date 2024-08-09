@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Stars} from "../Images/MainImage.jsx"
 const PurchasedCard = ({
   title,
   buyerName,
@@ -12,7 +12,8 @@ const PurchasedCard = ({
   orderDate,
   size,
   description,
-  tags
+  tags,
+  rating
 }) => {
   return (
     <div className="max-w-72 mx-4 bg-gradient-to-b from-violet-300 to-violet-400 rounded-xl shadow-lg p-4">
@@ -57,7 +58,7 @@ const PurchasedCard = ({
       </div>
 
       <p className="font-gruppo text-center text-xl font-bold mb-4">Rs. {price}</p>
-
+    
       <div className="flex justify-center space-x-2 mb-4">
         {tags.map((tag, index) => (
           <span key={index} className="font-gruppo px-3 py-1 bg-white rounded-full text-xs">
@@ -65,12 +66,12 @@ const PurchasedCard = ({
           </span>
         ))}
       </div>
-
+      
       <div className="text-sm text-center mb-4">
         <p className='font-gruppo font-bold'>ORDERED ON: <span className="font-gruppo ">{orderDate}</span></p>
         <p className='font-gruppo font-bold'>SIZE: <span className="font-gruppo">{size}</span></p>
       </div>
-
+      <Stars rating = {rating}/> 
       <p className="font-gruppo font-bold text-xs text-center text-gray-700">
         {description}
       </p>
