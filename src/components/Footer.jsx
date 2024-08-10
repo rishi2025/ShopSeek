@@ -15,7 +15,7 @@ function Footer() {
                             </div>
                             <div>
                                 <p className="text-sm text-white">
-                                    &copy; Copyright 2023. All Rights Reserved by ShopSeek.
+                                    &copy; Copyright 2024. All Rights Reserved by ShopSeek.
                                 </p>
                             </div>
                         </div>

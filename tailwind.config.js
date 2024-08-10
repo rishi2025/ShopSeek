@@ -10,6 +10,7 @@ export default {
         gruppo: ['"Gruppo"', 'sans-serif'],
         habibi: ['"Habibi"', 'serif'],
         electrolize: ['"Electrolize"', 'sans-serif'],
+        fira: ['"Fira Sans"', 'sans-serif'],
       },
       colors:{
         customColors:{

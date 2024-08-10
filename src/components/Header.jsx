@@ -19,6 +19,7 @@ function Header() {
         },
         {
             name: "Contact Us",
+            ref: "Contact"
         },
         {
             name: "Sign Up",
@@ -42,7 +43,7 @@ function Header() {
                                 <a href={`#${item.ref}`}>
                                     <button
                                     // onClick={() => navigate(item.slug)}
-                                        className={`inline-bock px-6 py-2 font-gruppo duration-200 ${item.name === "Sign Up" ? "bg-customColors-offWhite" : null} hover:border-b-2 hover:border-purple-950 hover:text-purple-950 hover:transform hover:-translate-y-1`}
+                                        className={`inline-bock px-6 py-2 font-gruppo font-bold duration-200 ${item.name === "Sign Up" ? "bg-customColors-offWhite text-black" : null} hover:border-b-2 hover:border-purple-950 hover:text-purple-950 hover:transform hover:-translate-y-1`}
                                     >
                                         {item.name}
                                 </button>
