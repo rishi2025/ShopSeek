@@ -6,7 +6,7 @@ function Home() {
     return (
         <Container px={"px-0"}>
             {/* Landing */}
-            <Container className="h-screen bg-inherit w-full relative" px="px-0">
+            <Container className="h-[45.5rem] bg-inherit w-full relative" px="px-0">
                 <div className='absolute top-0 left-0 bg-gradient-to-r from-customColors-offWhite to-customColors-offWhiteDark w-1/2 h-screen'>
                     <img src={Random1} className='h-80 absolute transfrom translate-y-1/4' />
                     <img src={Trolley} className='h-64 absolute bottom-0' />
@@ -32,7 +32,8 @@ function Home() {
             </Container>
 
             {/* About */}
-            <Container className="h-screen bg-customColors-offWhite w-full" px="px-0">
+            <Container className="h-[45.5rem] bg-customColors-offWhite w-full" px="px-0" >
+                <a name="About"></a>
                 About
             </Container>
         </Container>
