@@ -3,6 +3,7 @@ import Trolley from "./Trolley.png";
 import ShoppingList from "./ShoppingList.png";
 import ShopSeekLogo from "./ShopSeekLogo.png";
 import Stars from "./Stars.jsx";
+import LeftPanelBullet from "./LeftPanelBullet.png";
 
 export {
     Random1,
@@ -10,4 +11,5 @@ export {
     ShoppingList,
     ShopSeekLogo,
     Stars,
+    LeftPanelBullet,
 };
