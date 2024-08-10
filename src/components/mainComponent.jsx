@@ -4,6 +4,7 @@ import Header from "./Header.jsx";
 import Logo from "./Logo.jsx";
 import Footer from "./Footer.jsx";
 import PurchasedCard from "./PurchasedCard.jsx";
+import LeftPanel from "./LeftPanel.jsx";
 export {
     Button,
     Container,
@@ -11,4 +12,5 @@ export {
     Logo,
     Footer,
     PurchasedCard,
+    LeftPanel,
 };
