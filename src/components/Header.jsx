@@ -26,7 +26,7 @@ function Header() {
     ];
 
     return (
-        <header className="py-4 shadow bg-inherit backdrop-blur-sm text-black font-gruppo fixed z-10 w-full">
+        <header className="py-4 shadow bg-inherit backdrop-blur-md text-black font-gruppo fixed z-10 w-full">
             <Container>
                 <nav className="flex">
                     <div className="mr-4 text-black">
