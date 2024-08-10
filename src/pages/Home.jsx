@@ -7,7 +7,7 @@ function Home() {
         <Container px={"px-0"}>
             {/* Landing */}
             <Container className="h-[45.5rem] bg-inherit w-full relative" px="px-0">
-                <div className='absolute top-0 left-0 bg-gradient-to-r from-customColors-offWhite to-customColors-offWhiteDark w-1/2 h-screen'>
+                <div className='absolute top-0 left-0 bg-gradient-to-r from-customColors-offWhite to-customColors-offWhiteDark w-1/2 h-[45.5rem]'>
                     <img src={Random1} className='h-80 absolute transfrom translate-y-1/4' />
                     <img src={Trolley} className='h-64 absolute bottom-0' />
                     <p className='font-habibi text-[#641FBB] absolute transform top-1/3 right-0 text-right mr-4 text-5xl leading-relaxed'>

@@ -1,9 +1,9 @@
 import React from "react";
-import LeftPanelBullet from '../images/LeftPanelBullet.png';
+import LeftPanelBullet from '../Images/LeftPanelBullet.png';
 
-const LeftPanel = ({ username, role, menuItems, userImgUrl = "https://via.placeholder.com/100", isActive }) => {
+const LeftPanel = ({ username, role = "Buyer", menuItems = ["Home"], userImgUrl = "https://via.placeholder.com/100", isActive}) => {
     return (
-        <div className="w-[200px] h-dvh p-5 left-0 bg-gray-100">
+        <div className="w-[13rem] h-dvh p-5 left-0 bg-gray-100">
             <div className="text-center mb-5 relative">
                 <img
                     src={userImgUrl}

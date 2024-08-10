@@ -5,6 +5,8 @@ import Logo from "./Logo.jsx";
 import Footer from "./Footer.jsx";
 import PurchasedCard from "./PurchasedCard.jsx";
 import LeftPanel from "./LeftPanel.jsx";
+import HeaderOpaque from "./HeaderOpaque.jsx";
+
 export {
     Button,
     Container,
@@ -13,4 +15,5 @@ export {
     Footer,
     PurchasedCard,
     LeftPanel,
+    HeaderOpaque,
 };

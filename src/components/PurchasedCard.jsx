@@ -1,19 +1,19 @@
 import React from 'react';
 import {Stars} from "../Images/MainImage.jsx"
 const PurchasedCard = ({
-  title,
-  buyerName,
-  buyerImage,
-  sellerName,
-  sellerImage,
-  sellerProductImage,
-  buyerProductImage,
-  price,
-  orderDate,
-  size,
-  description,
-  tags,
-  rating
+  title = "Shreyash",
+  buyerName = "Shreyash",
+  buyerImage = Stars,
+  sellerName = "Shreyash",
+  sellerImage = Stars,
+  sellerProductImage = Stars,
+  buyerProductImage = Stars,
+  price = 1200,
+  orderDate = "12-03-24",
+  size = "S",
+  description = "",
+  tags = ["Shoes"],
+  rating = 3,
 }) => {
   return (
     <div className="max-w-72 mx-4 bg-gradient-to-b from-violet-300 to-violet-400 rounded-xl shadow-lg p-4">
