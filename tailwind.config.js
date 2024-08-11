@@ -19,6 +19,7 @@ export default {
           'radialPurpleD': '#694F8E',
           'offWhite': '#FFF0D2',
           'offWhiteDark':'#FFF2C3',
+          'fadedPurple' :'#F1EAFF',
         },
       },
     },
