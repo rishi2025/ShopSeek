@@ -1,7 +1,7 @@
 import React from 'react'
 import {HeaderOpaque,LeftPanel} from '../components/mainComponent.jsx'
 import ProfileForm from '../components/ProfileForm.jsx'
-function Info() {
+function SellerInfo() {
   return (
     
     <div className="min-h-screen flex flex-col">
@@ -17,4 +17,4 @@ function Info() {
   )
 }
 
-export default Info
+export default SellerInfo
