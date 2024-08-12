@@ -6,6 +6,7 @@ import Footer from "./Footer.jsx";
 import PurchasedCard from "./PurchasedCard.jsx";
 import LeftPanel from "./LeftPanel.jsx";
 import HeaderOpaque from "./HeaderOpaque.jsx";
+import PurchasesPage from "./PurchasesPage.jsx";
 
 export {
     Button,
@@ -16,4 +17,5 @@ export {
     PurchasedCard,
     LeftPanel,
     HeaderOpaque,
+    PurchasesPage,
 };
