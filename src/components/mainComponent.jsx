@@ -6,6 +6,7 @@ import Footer from "./Footer.jsx";
 import PurchasedCard from "./PurchasedCard.jsx";
 import LeftPanel from "./LeftPanel.jsx";
 import HeaderOpaque from "./HeaderOpaque.jsx";
+import ProfilePage from "./ProfileForm.jsx";
 import PurchasesPage from "./PurchasesPage.jsx";
 
 export {
@@ -17,5 +18,6 @@ export {
     PurchasedCard,
     LeftPanel,
     HeaderOpaque,
+    ProfilePage,
     PurchasesPage,
 };

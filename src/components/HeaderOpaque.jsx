@@ -25,7 +25,7 @@ function HeaderOpaque() {
     const userImage = null;
 
     return (
-        <header className="py-4 shadow bg-[#874CCC] text-white font-gruppo fixed z-10 w-full">
+        <header className="py-4 shadow bg-[#874CCC] text-white font-gruppo absolute left-0 top-0 z-10 w-full">
             <Container>
                 <nav className="flex">
                     <div className="mr-4 text-white">
