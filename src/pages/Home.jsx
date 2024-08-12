@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button, Container } from "../components/mainComponent.jsx";
+import { Button, Container, Header, Footer } from "../components/mainComponent.jsx";
 import { Random1, Trolley, ShoppingList } from '../Images/MainImage.jsx';
 
 function Home() {
     return (
-        <Container px={"px-0"}>
+        <Container className={'bg-gradient-to-r from-customColors-radialPurpleL to-customColors-radialPurpleD min-h-screen'} px='px-0'>
+            <Header />
             {/* Landing */}
             <Container className="h-[45.5rem] bg-inherit w-full relative shadow-lg shadow-[#333]" px="px-0">
                 <div className='absolute top-0 left-0 bg-gradient-to-r from-customColors-offWhite to-customColors-offWhiteDark w-1/2 h-[45.5rem]'>
@@ -68,6 +69,7 @@ function Home() {
                     </div>
                 </Container>
             </Container>
+            <Footer />
         </Container>
     )
 }
