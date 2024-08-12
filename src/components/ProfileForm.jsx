@@ -37,7 +37,7 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="relative min-h-screen bg-customColors-fadedPurple py-12 px-4 sm:px-6 lg:px-8">
+        <div className="relative h-[45.5rem] bg-customColors-fadedPurple py-12 px-4 sm:px-6 lg:px-8">
             <h2 className="border-2 border-customColors-fadedPurple p-5 rounded-lg max-w-32 text-3xl font-gruppo font-bold mb-8 text-left bg-white">
                 About
             </h2>
