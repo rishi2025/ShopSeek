@@ -16,7 +16,7 @@ const PurchasedCard = ({
   rating = 3,
 }) => {
   return (
-    <div className="max-h-[30rem] max-w-72 mx-4 bg-gradient-to-b from-violet-300 to-violet-400 rounded-xl shadow-lg p-4">
+    <div className="max-h-[30rem] max-w-[17rem] mx-4 bg-gradient-to-b from-violet-300 to-violet-400 rounded-xl shadow-lg p-4">
       <h2 className="font-gruppo text-center text-lg font-bold mb-4">{title}</h2>
 
       <div className="flex justify-between items-center mb-4">

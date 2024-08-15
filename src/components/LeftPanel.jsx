@@ -25,7 +25,7 @@ const LeftPanel = ({ username, role = "Buyer", menuItems = ["Home"], userImgUrl 
                             <span className="mr-2.5 flex items-end">
                                 <img 
                                     src={LeftPanelBullet} 
-                                    alt="" 
+                                    alt=""
                                     className="w-3 h-3 relative top-[2px]" 
                                 />
                             </span>

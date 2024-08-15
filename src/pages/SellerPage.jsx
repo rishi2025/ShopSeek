@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Footer, HeaderOpaque, LeftPanel } from '../components/mainComponent.jsx';
-import ProfileForm from '../components/ProfileForm.jsx';
+import { Container, Footer, HeaderOpaque, LeftPanel, ProfilePage, PurchasesPage } from '../components/mainComponent.jsx';
 
 function SellerPage() {
     return (
@@ -9,7 +8,7 @@ function SellerPage() {
             <div className="min-h-screen flex flex-row mt-20">
                 <LeftPanel role="seller" menuItems={["Home","Your Info"]} isActive={1} />
                 <main className="flex-1">
-                    <ProfileForm/>
+                    <ProfilePage />
                 </main>
             </div>
             <Footer />

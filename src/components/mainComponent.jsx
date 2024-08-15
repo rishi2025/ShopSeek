@@ -8,6 +8,9 @@ import LeftPanel from "./LeftPanel.jsx";
 import HeaderOpaque from "./HeaderOpaque.jsx";
 import ProfilePage from "./ProfileForm.jsx";
 import PurchasesPage from "./PurchasesPage.jsx";
+import Signup from "./Signup.jsx";
+import Input from "./Input.jsx";
+import Login from "./Login.jsx";
 
 export {
     Button,
@@ -20,4 +23,7 @@ export {
     HeaderOpaque,
     ProfilePage,
     PurchasesPage,
+    Signup,
+    Input,
+    Login,
 };

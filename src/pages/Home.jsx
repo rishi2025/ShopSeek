@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Container, Header, Footer } from "../components/mainComponent.jsx";
 import { Random1, Trolley, ShoppingList } from '../Images/MainImage.jsx';
+import { useLocation } from 'react-router-dom';
 
 function Home() {
+
+    const location = useLocation();
+
+    useEffect(() => {
+        const domElement = document.getElementById(location.hash?.replace('#', ''));
+        if (domElement)
+        {
+            domElement?.scrollIntoView({
+                behavior: "smooth",
+            });
+        }
+    }, [location])
+
     return (
         <Container className={'bg-gradient-to-r from-customColors-radialPurpleL to-customColors-radialPurpleD min-h-screen'} px='px-0'>
             <Header />
             {/* Landing */}
+            <div id="Home"></div>
             <Container className="h-[45.5rem] bg-inherit w-full relative shadow-lg shadow-[#333]" px="px-0">
                 <div className='absolute top-0 left-0 bg-gradient-to-r from-customColors-offWhite to-customColors-offWhiteDark w-1/2 h-[45.5rem]'>
                     <img src={Random1} className='h-80 absolute transfrom translate-y-1/4' />
@@ -33,8 +48,8 @@ function Home() {
             </Container>
 
             {/* About */}
-            <Container className="h-[45.5rem] bg-customColors-offWhite w-full" px="px-0" >
-                <a name="About"></a>
+            <div id="About"></div>
+            <Container className="h-[45.5rem] bg-customColors-offWhite w-full" px="px-0">
                 <div className='font-fira text-3xl h-36 w-52 mb-10 flex justify-center items-end text-customColors-lightPurple'>
                     About Us
                 </div>
@@ -54,11 +69,11 @@ function Home() {
                     </Container>
                     <img src={Trolley} className='h-72'/>
                 </Container>
-                <a name="Contact"></a>
             </Container>
 
 
             {/* Contact Us */}
+            <div id="Contact"></div>
             <Container className="h-[40rem] bg-customColors-offWhite w-full flex flex-col items-center" px="px-0" >
                 <div className='font-fira text-3xl h-16 w-52 mb-10 flex justify-center items-end text-customColors-lightPurple'>
                     Contact Us
