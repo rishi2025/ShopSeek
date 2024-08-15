@@ -10,7 +10,7 @@ function HeaderOpaque() {
     const navItems = [
         {
             name: 'Home',
-            path: '/',
+            path: '/dashboard',
         },
         {
             name: "Chats",

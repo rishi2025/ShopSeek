@@ -2,33 +2,36 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Logo, Button, Input } from './mainComponent.jsx';
 import { ShopSeekLogo } from "../Images/MainImage.jsx";
+import { useForm } from "react-hook-form";
 
 function Login() {
 
     const navigate = useNavigate();
     // const dispatch = useDispatch();
-    // const { register, handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm();
     const [error, setError] = useState("");
 
-    // const login = async (data) => {
-    //     setError("");
-    //     try {
+    const login = async (data) => {
+        setError("");
+        // try {
 
-    //         const session = await authService.login(data);
+        //     const session = await authService.login(data);
 
-    //         if (session) {
-    //             const userData = await authService.getCurrentUser();
-    //             if (userData)
-    //                 dispatch(authLogin(userData));
+        //     if (session) {
+        //         const userData = await authService.getCurrentUser();
+        //         if (userData)
+        //             dispatch(authLogin(userData));
 
-    //             navigate("/");
-    //         }
+        //         navigate("/");
+        //     }
 
 
-    //     } catch(error) {
-    //         setError(error.message);
-    //     }
-    // }
+        // } catch(error) {
+        //     setError(error.message);
+        // }
+
+        navigate("/seller");
+    }
 
     return (
         <div
@@ -52,7 +55,7 @@ function Login() {
                 </p>
                 {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
-                <form className="mt-8"> {/* onSubmit={handleSubmit(login)} */}
+                <form className="mt-8" onSubmit={handleSubmit(login)}>
                     <div className="space-y-5">
                         <Input
                             label="Email: "

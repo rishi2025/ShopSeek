@@ -34,6 +34,14 @@ const router = createBrowserRouter([
           // </AuthLayout>
         ),
       },
+      {
+        path: "/seller",
+        element: (
+          // <AuthLayout authentication={false}>
+              <SellerPage />
+          // </AuthLayout>
+        ),
+      },
     ]
   }
 ]);

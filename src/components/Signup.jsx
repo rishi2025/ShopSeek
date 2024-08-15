@@ -2,32 +2,35 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Logo, Button, Input } from './mainComponent';
 import { ShopSeekLogo } from "../Images/MainImage";
+import { useForm } from "react-hook-form";
 
 function Signup() {
 
-    // const navigate = useNavigate();
-    // const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
+    const { register, handleSubmit } = useForm();
     const [error, setError] = useState("");
 
-    // const create = async (data) => {
-    //     setError("");
-    //     try {
+    const create = async (data) => {
+        setError("");
+        // try {
 
-    //         const userData = await authService.createAccount(data);
+        //     const userData = await authService.createAccount(data);
 
-    //         if (userData) {
-    //             const user = await authService.getCurrentUser();
-    //             if (user)
-    //                 dispatch(authLogin(user));
+        //     if (userData) {
+        //         const user = await authService.getCurrentUser();
+        //         if (user)
+        //             dispatch(authLogin(user));
 
-    //             navigate("/");
-    //         }
+        //         navigate("/");
+        //     }
 
 
-    //     } catch(error) {
-    //         setError(error.message);
-    //     }
-    // }
+        // } catch(error) {
+        //     setError(error.message);
+        // }
+
+        navigate("/seller")
+    }
 
     return (
         <div className="flex items-center justify-center">
@@ -49,38 +52,38 @@ function Signup() {
                 </p>
                 {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
-                <form> {/*onSubmit={handleSubmit(create)}*/}
+                <form onSubmit={handleSubmit(create)}>
                     <div className="space-y-5">
                         <Input
                             label="Full Name: "
                             placeholder="Enter your name"
                             type="text"
-                            // {...register("name", {
-                            //     required: true,
-                            // })}
+                            {...register("name", {
+                                required: true,
+                            })}
                         />
 
                         <Input
                             label="Email: "
                             placeholder="Enter your email"
                             type="email"
-                            // {...register("email", {
-                            //     required: true,
-                            //     validate: {
-                            //         matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                            //             "Email address must be a valid address"
-                            //     }
-                            // })}
+                            {...register("email", {
+                                required: true,
+                                validate: {
+                                    matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                                        "Email address must be a valid address"
+                                }
+                            })}
                         />
 
                         <Input
                             label="Password: "
                             placeholder="Enter your password"
                             type="password"
-                            // {...register("password", {
-                            //     required: true
-                            //     }
-                            // )}
+                            {...register("password", {
+                                required: true
+                                }
+                            )}
                         />
 
                         <Button
