@@ -78,11 +78,11 @@ function Home() {
                 <div className='font-fira text-3xl h-16 w-52 mb-10 flex justify-center items-end text-customColors-lightPurple'>
                     Contact Us
                 </div>
-                <Container className="w-[40rem] h-[27rem] bg-[#D4BFFF] font-gruppo rounded-lg bg-gradient-to-r shadow-lg shadow-[#333] from-customColors-radialPurpleL to-customColors-lightPurple text-3xl p-8" px='px-8'>
+                <div className="w-[40rem] h-[27rem] bg-[#D4BFFF] font-gruppo rounded-lg bg-gradient-to-r shadow-lg shadow-[#333] from-customColors-radialPurpleL to-customColors-lightPurple text-3xl p-8" px='px-8'>
                     <div className='font-fira text-3xl text-customColors-offWhite'>
                         Contact Us
                     </div>
-                </Container>
+                </div>
             </Container>
             <Footer />
         </Container>

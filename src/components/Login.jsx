@@ -37,7 +37,7 @@ function Login() {
         <div
         className='flex items-center justify-center w-full'
         >
-            <div className={`mx-auto my-32 w-full max-w-lg backdrop-blur-lg bg-gradient-to-r from-[#C48CFF] to-[#FFECA8] rounded-xl p-10 border border-black/10`}>
+            <div className={`mx-auto my-32 w-full max-w-lg backdrop-blur-lg shadow-md shadow-[#333] bg-gradient-to-r from-[#C48CFF] to-[#FFECA8] rounded-xl p-10 border border-black/10`}>
                 <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
                         <Logo src={ShopSeekLogo} width="40px" className="rounded-xl" />
@@ -61,30 +61,30 @@ function Login() {
                             label="Email: "
                             placeholder="Enter your email"
                             type="email"
-                            // {...register("email", {
-                            //     required: true,
-                            //     validate: {
-                            //         matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                            //             "Email address must be a valid address"
-                            //     }
-                            // })}
+                            {...register("email", {
+                                required: true,
+                                validate: {
+                                    matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                                        "Email address must be a valid address"
+                                }
+                            })}
                         />
 
                         <Input
                             label="Password: "
                             placeholder="Enter your password"
                             type="password"
-                            // {...register("password", {
-                            //     required: true
-                            //     }
-                            // )}
+                            {...register("password", {
+                                required: true
+                                }
+                            )}
                         />
 
                         <Button
                             type="submit"
                             bgColor="bg-[#ffde67]"
                             textColor="text-black"
-                            className="w-full items-center rounded-full hover:bg-[#ffd84c] font-fira"
+                            className="w-full items-center rounded-full hover:bg-[#ffd84c] font-fira shadow-md shadow-[#333]"
                             text={"I am a Customer"}
                             round={false}
                         />
@@ -92,7 +92,7 @@ function Login() {
                             type="submit"
                             bgColor="bg-[#9967D9]"
                             textColor="text-white"
-                            className="w-full items-center rounded-full hover:bg-[#8b50d8] font-fira"
+                            className="w-full items-center rounded-full hover:bg-[#8b50d8] font-fira shadow-md shadow-[#333]"
                             text={"I am a Seller"}
                             round={false}
                         />
