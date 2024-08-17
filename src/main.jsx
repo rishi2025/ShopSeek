@@ -4,6 +4,9 @@ import App from './App.jsx'
 import './index.css';
 import { LoginForm, SellerPage, SignupForm, Home } from './pages/MainPage.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ProductRequest from './components/ProductRequests.jsx';
+import OutgoingDeals from './components/OutgoingDeals.jsx';
+import SellerDashboard from './components/SellerDashboard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +42,14 @@ const router = createBrowserRouter([
         element: (
           // <AuthLayout authentication={false}>
               <SellerPage />
+          // </AuthLayout>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          // <AuthLayout authentication={false}>
+              <SellerDashboard />
           // </AuthLayout>
         ),
       },
