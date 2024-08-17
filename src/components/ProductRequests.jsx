@@ -31,7 +31,7 @@ const ProductRequest = ({ headings = { product: 'Product', categories: 'Categori
     },
 ] }) => {
     return (
-        <div className="bg-white shadow-lg rounded-lg p-8 pt-4 border-2">
+        <div className="bg-white shadow-lg rounded-lg p-4 border-2 overflow-y-scroll h-96">
             <h2 className="text-lg font-semibold mb-4">Product Requests</h2>
             <table className="w-full text-left">
                 <thead>

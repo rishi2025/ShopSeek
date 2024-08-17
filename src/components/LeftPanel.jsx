@@ -38,7 +38,7 @@ const LeftPanel = ({
             <ul className="list-none p-0">
                 {menuItems.map((item, index) => (
                     <li key={index} className="my-2.5">
-                        <a href="#" className="no-underline text-black flex items-center">
+                        <a className="no-underline text-black flex items-center">
                             <span className="mr-2.5 flex items-end">
                                 <img 
                                     src={LeftPanelBullet} 

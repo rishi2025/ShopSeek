@@ -22,9 +22,30 @@ const OutgoingDeals = ({ headings = { product: 'Product', price: 'Price', catego
         categories: ['Footwear', 'Lifestyle'],
         status: 'Pending',
     },
+    {
+        image : "https://trufflecollection.co.in/cdn/shop/products/TC-CUB3-WHITE-03-White_image_url_1.jpg?v=1624621482",
+        name: 'Blue shoes',
+        price: 'Rs. 2000',
+        categories: ['Footwear', 'Lifestyle'],
+        status: 'Pending',
+    },
+    {
+        image : "https://trufflecollection.co.in/cdn/shop/products/TC-CUB3-WHITE-03-White_image_url_1.jpg?v=1624621482",
+        name: 'Blue shoes',
+        price: 'Rs. 2000',
+        categories: ['Footwear', 'Lifestyle'],
+        status: 'Pending',
+    },
+    {
+        image : "https://trufflecollection.co.in/cdn/shop/products/TC-CUB3-WHITE-03-White_image_url_1.jpg?v=1624621482",
+        name: 'Blue shoes',
+        price: 'Rs. 2000',
+        categories: ['Footwear', 'Lifestyle'],
+        status: 'Pending',
+    },
 ] }) => {
     return (
-        <div className="bg-white shadow-lg rounded-lg p-8 pt-4 border-2">
+        <div className="bg-white shadow-lg rounded-lg p-4 border-2 overflow-y-scroll h-96">
             <h2 className="text-lg font-semibold mb-4">Outgoing Deals</h2>
             <table className="w-full text-left">
                 <thead>
