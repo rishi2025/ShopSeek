@@ -11,6 +11,11 @@ import PurchasesPage from "./PurchasesPage.jsx";
 import Signup from "./Signup.jsx";
 import Input from "./Input.jsx";
 import Login from "./Login.jsx";
+import ProductRequest from "./ProductRequests.jsx";
+import OutgoingDeals from "./OutgoingDeals.jsx";
+import Notification from "./Notification.jsx";
+import SmallBox from "./SmallBox.jsx";
+import SellerDashboard from "./SellerDashboard.jsx";
 
 export {
     Button,
@@ -26,4 +31,9 @@ export {
     Signup,
     Input,
     Login,
+    ProductRequest,
+    OutgoingDeals,
+    Notification,
+    SmallBox,
+    SellerDashboard,
 };
