@@ -24,7 +24,7 @@ const OutgoingDeals = ({ headings = { product: 'Product', price: 'Price', catego
     },
 ] }) => {
     return (
-        <div className="bg-white shadow-md rounded-lg p-4">
+        <div className="bg-white shadow-lg rounded-lg p-8 pt-4 border-2">
             <h2 className="text-lg font-semibold mb-4">Outgoing Deals</h2>
             <table className="w-full text-left">
                 <thead>
@@ -38,10 +38,10 @@ const OutgoingDeals = ({ headings = { product: 'Product', price: 'Price', catego
                 <tbody>
                     {products ? (
                         products.map((product, index) => (
-                            <tr key={index} className="border-b border-gray-200">
-                                <td className="py-3 px-4 flex flex-row">
-                                    <img src={product.image} className="w-12 h-12 rounded-full mb-2 ml-8"/>
-                                    <span className="text-sm font-medium text-gray-800">{product.name}</span>
+                            <tr key={index} className="border-b justify-around items-center border-gray-200">
+                                <td className="py-3 pr-4 flex flex-row gap-[0.5rem] justify-around items-center">
+                                    <img src={product.image} className="w-12 h-12 rounded-full mb-2 justify-items-center"/>
+                                    <div className="text-sm font-medium flex align-middle text-gray-800">{product.name}</div>
                                 </td>
                                 <td className="py-3 px-4">
                                     <span className="text-xs text-gray-500">{product.price}</span>

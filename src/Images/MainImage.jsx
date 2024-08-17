@@ -5,6 +5,8 @@ import ShopSeekLogo from "./ShopSeekLogo.png";
 import Stars from "./Stars.jsx";
 import LeftPanelBullet from "./LeftPanelBullet.png";
 import User from "./user.svg";
+import People from "./users.png";
+import Graph from "./graph.png";
 
 export {
     Random1,
@@ -14,4 +16,6 @@ export {
     Stars,
     LeftPanelBullet,
     User,
+    People,
+    Graph,
 };
