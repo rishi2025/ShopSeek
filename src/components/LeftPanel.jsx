@@ -37,22 +37,22 @@ const LeftPanel = ({
 
             <ul className="list-none p-0">
                 {menuItems.map((item, index) => (
-                    <li key={index} className="my-2.5">
-                        <a className="no-underline text-black flex items-center">
-                            <span className="mr-2.5 flex items-end">
+                    <li key={index} className="my-2.5 align-middle">
+                        <div className="no-underline text-black flex align-middle items-center">
+                            <div className="mr-2.5 flex align-middle">
                                 <img 
                                     src={LeftPanelBullet} 
                                     alt=""
-                                    className="w-3 h-3 relative top-[2px]" 
+                                    className="w-3 h-3 relative top-[2px] align-middle" 
                                 />
-                            </span>
-                            <span
-                                className={`relative top-[-2px] font-gruppo ${isActiveMenuOption == index ? "bg-violet-300" : null}`}
+                            </div>
+                            <div
+                                className={`cursor-pointer flex align-middle relative top-[-2px] w-11/12 pl-2 font-gruppo ${isActiveMenuOption == index ? "bg-violet-300 font-semibold" : null}`}
                                 onClick={() => handleClick(index)}
                             >
                                 {item}
-                            </span>
-                        </a>
+                            </div>
+                        </div>
                     </li>
                 ))}
             </ul>
