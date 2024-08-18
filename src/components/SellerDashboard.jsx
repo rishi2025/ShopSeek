@@ -10,12 +10,14 @@ function SellerDashboard() {
                     imagesrc={Graph}
                     title={"Total Orders"}
                     totalNumber={420}
+                    bg = "bg-gradient-to-r from-[#E49BFF] to-[#F0D4F5]"
                 />
 
                 <SmallBox
                     imagesrc={People}
                     title={"New Customers"}
                     totalNumber={123}
+                    bg = "bg-gradient-to-r from-[#E3A5C7] to-[#FFDFD6]"
                 />
 
                 <Notification />

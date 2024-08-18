@@ -10,6 +10,7 @@ function Login() {
     // const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("");
+    const [role, setRole] = useState("seller");
 
     const login = async (data) => {
         setError("");
@@ -30,13 +31,11 @@ function Login() {
         //     setError(error.message);
         // }
 
-        navigate("/seller");
+        navigate(`/${role}`);
     }
 
     return (
-        <div
-        className='flex items-center justify-center w-full'
-        >
+        <div className='flex items-center justify-center w-full'>
             <div className={`mx-auto my-32 w-full max-w-lg backdrop-blur-lg shadow-md shadow-[#333] bg-gradient-to-r from-[#C48CFF] to-[#FFECA8] rounded-xl p-10 border border-black/10`}>
                 <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
@@ -87,7 +86,9 @@ function Login() {
                             className="w-full items-center rounded-full hover:bg-[#ffd84c] font-fira shadow-md shadow-[#333]"
                             text={"I am a Customer"}
                             round={false}
+                            onClick={() => {setRole("buyer")}}
                         />
+
                         <Button
                             type="submit"
                             bgColor="bg-[#9967D9]"
@@ -95,6 +96,7 @@ function Login() {
                             className="w-full items-center rounded-full hover:bg-[#8b50d8] font-fira shadow-md shadow-[#333]"
                             text={"I am a Seller"}
                             round={false}
+                            onClick={() => {setRole("seller")}}
                         />
                     </div>
                 </form>

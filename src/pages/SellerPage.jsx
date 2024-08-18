@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Footer, HeaderOpaque, LeftPanel, ProfilePage, PurchasesPage, SellerDashboard } from '../components/mainComponent.jsx';
 
 function SellerPage() {
@@ -14,9 +14,13 @@ function SellerPage() {
 
     const [currentPage, setCurrentPage] = useState(0);
 
+    useEffect(() => {
+        console.log(currentPage);
+    }, [currentPage])
+
     return (
         <Container px="px-0">
-            <HeaderOpaque />
+            <HeaderOpaque setCurrentPage={setCurrentPage} />
             <div className="min-h-screen flex flex-row mt-20">
                 <LeftPanel role="Seller" menuItems={[
                     "DASHBOARD",
@@ -26,7 +30,7 @@ function SellerPage() {
                     "SELLS",
                     "YOUR INFO",
                 ]}
-                    isActive={0}
+                    isActive={currentPage}
                     setCurrentPage = {setCurrentPage}
                 />
 

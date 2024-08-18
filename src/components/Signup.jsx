@@ -9,6 +9,7 @@ function Signup() {
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("");
+    const [role, setRole] = useState("seller");
 
     const create = async (data) => {
         setError("");
@@ -29,7 +30,7 @@ function Signup() {
         //     setError(error.message);
         // }
 
-        navigate("/seller")
+        navigate(`/${role}`);
     }
 
     return (
@@ -93,6 +94,7 @@ function Signup() {
                             className="w-full items-center rounded-full hover:bg-[#ffd84c] font-fira shadow-md shadow-[#333]"
                             text={"I am a Customer"}
                             round={false}
+                            onClick={() => {setRole("buyer")}}
                         />
                         <Button
                             type="submit"
@@ -101,6 +103,7 @@ function Signup() {
                             className="w-full items-center rounded-full hover:bg-[#8b50d8] font-fira shadow-md shadow-[#333]"
                             text={"I am a Seller"}
                             round={false}
+                            onClick={() => {setRole("seller")}}
                         />
                     </div>
                 </form>

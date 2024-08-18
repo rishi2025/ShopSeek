@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button, Container, Header, Footer } from "../components/mainComponent.jsx";
 import { Random1, Trolley, ShoppingList } from '../Images/MainImage.jsx';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Home() {
 
@@ -38,13 +38,15 @@ function Home() {
                     WANT <br />
                 </p>
                 <img src={ShoppingList} className='h-[37.5rem] absolute transfrom translate-y-[20%] right-0' />
-                <Button
-                    text={"JOIN"}
-                    subText={"NOW!"}
-                    bgColor={"bg-gradient-to-r from-customColors-lightPurple to-customColors-offWhite"}
-                    className={'absolute top-[70%] left-[calc(50%-8rem)] font-Electrolize text-xl w-64 h-14 shadow-lg hover:shadow-[#333]'}
-                    round={false}
-                />
+                <Link to={"/signup"}>
+                    <Button
+                        text={"JOIN"}
+                        subText={"NOW!"}
+                        bgColor={"bg-gradient-to-r from-customColors-lightPurple to-customColors-offWhite"}
+                        className={'absolute top-[70%] left-[calc(50%-8rem)] font-Electrolize text-xl w-64 h-14 shadow-lg hover:shadow-[#333]'}
+                        round={false}
+                    />
+                </Link>
             </Container>
 
             {/* About */}

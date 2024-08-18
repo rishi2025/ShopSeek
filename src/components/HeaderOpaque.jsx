@@ -4,21 +4,24 @@ import { useNavigate } from "react-router-dom";
 import { ShopSeekLogo, User } from "../Images/MainImage.jsx";
 import { Container, Logo } from "./mainComponent.jsx";
 
-function HeaderOpaque() {
+function HeaderOpaque({setCurrentPage, role = "seller"}) {
     const navigate = useNavigate();
 
     const navItems = [
         {
             name: 'Home',
-            path: '/dashboard',
+            path: `/${role}`,
+            menuOption: 0,
         },
         {
             name: "Chats",
-            path: '/chats',
+            path: `/${role}`,
+            menuOption: 2,
         },
         {
             name: "Cart",
-            path: '/out-deals',
+            path: `/${role}`,
+            menuOption: 3,
         },
         {
             name: "Logout",
@@ -27,6 +30,11 @@ function HeaderOpaque() {
     ];
 
     const userImage = null;
+
+    const handleClick = (item) => {
+        navigate(item.path);
+        setCurrentPage(item.menuOption);
+    }
 
     return (
         <header className="py-4 shadow bg-[#874CCC] text-white font-gruppo absolute left-0 top-0 z-10 w-full">
@@ -43,7 +51,7 @@ function HeaderOpaque() {
                         (
                             <li key={item.name}>
                                 <button
-                                onClick={() => navigate(item.path)}
+                                onClick={() => handleClick(item)}
                                     className={`inline-bock px-6 py-2 font-gruppo font-bold duration-200 ${item.name === "Sign Up" ? "bg-customColors-offWhite text-black" : null} hover:border-b-2 hover:border-purple-950 hover:text-purple-950 hover:transform hover:-translate-y-1`}
                                 >
                                     {item.name}
