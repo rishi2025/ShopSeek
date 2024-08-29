@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css';
-import { LoginForm, SellerPage, SignupForm, Home } from './pages/MainPage.jsx';
+import { LoginForm, SellerPage, SignupForm, Home, PageNotFound } from './pages/MainPage.jsx';
 import { PurchasesPage, SellerDashboard, ProfilePage } from './components/mainComponent.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 
@@ -21,6 +21,7 @@ const router = createBrowserRouter(
         <Route path='sells' element={<PurchasesPage />} />
         <Route path='your-info' element={<ProfilePage />} />
       </Route>
+      <Route path='*' element={<PageNotFound />} />
     </Route>
   )
 )
