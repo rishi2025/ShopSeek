@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LeftPanelBullet from '../Images/LeftPanelBullet.png';
+import { useNavigate } from "react-router-dom";
 
 const LeftPanel = ({
     username,
-    role = "Buyer",
-    menuItems = ["Home"],
+    role = "seller",
+    menuItems = [{option: "Home", url: "/"}],
     userImgUrl = "https://via.placeholder.com/100",
-    isActive,
-    setCurrentPage,
 }) => {
 
-    const [isActiveMenuOption, setisActiveMenuOption] = useState(isActive);
+    const navigate = useNavigate();
+    const currentUrl = window.location.pathname;
+    const [isActiveMenuOption, setisActiveMenuOption] = useState(0);
+
+    useEffect(() => {
+        menuItems.forEach((option, index) => {
+            if (`/${role}${option.url}` === currentUrl)
+                setisActiveMenuOption(index);
+        })
+    }, [window.location.pathname]);
 
     const handleClick = (menuOption) => {
         setisActiveMenuOption(menuOption);
-        setCurrentPage(menuOption);
-        isActive = isActiveMenuOption;
+        navigate(`/${role}${menuItems[menuOption].url}`);
+        console.log(currentUrl);
     }
 
     return (
@@ -50,7 +58,7 @@ const LeftPanel = ({
                                 className={`cursor-pointer flex align-middle relative top-[-2px] w-11/12 pl-2 font-gruppo ${isActiveMenuOption == index ? "bg-violet-300 font-semibold" : null}`}
                                 onClick={() => handleClick(index)}
                             >
-                                {item}
+                                {item.option}
                             </div>
                         </div>
                     </li>

@@ -10,17 +10,17 @@ function HeaderOpaque({setCurrentPage, role = "seller"}) {
     const navItems = [
         {
             name: 'Home',
-            path: `/${role}`,
+            path: `/${role}/dashboard`,
             menuOption: 0,
         },
         {
             name: "Chats",
-            path: `/${role}`,
+            path: `/${role}/chats`,
             menuOption: 2,
         },
         {
             name: "Cart",
-            path: `/${role}`,
+            path: `/${role}/products`,
             menuOption: 3,
         },
         {
