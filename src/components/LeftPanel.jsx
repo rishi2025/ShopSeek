@@ -23,7 +23,7 @@ const LeftPanel = ({
     const handleClick = (menuOption) => {
         setisActiveMenuOption(menuOption);
         navigate(`/${role}${menuItems[menuOption].url}`);
-        console.log(currentUrl);
+        // console.log(currentUrl);
     }
 
     return (
