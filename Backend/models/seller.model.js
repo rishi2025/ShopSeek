@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
-const userSchema = new Schema({
+const sellerSchema = new Schema({
 
     email: {
         type: String,
@@ -18,24 +18,14 @@ const userSchema = new Schema({
         trim: true,
     },
 
-    profilePic: {
-        type: String,           // cloudinary url
-    },
-
-    previousPurchases: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "User_Products"
-        }
-    ],
-
     password: {
         type: String,
         required: [true, 'Password is required...'],
+        isModified: false,
     },
 
     refreshToken: {
-
+        type: String,
     },
 },
     {
@@ -43,7 +33,7 @@ const userSchema = new Schema({
     }
 );
 
-userSchema.pre("save", async function next() {
+sellerSchema.pre("save", async function next() {
 
     if (!this.isModified("password"))
         return next();
@@ -52,11 +42,11 @@ userSchema.pre("save", async function next() {
     next();
 });
 
-userSchema.methods.isPasswordCorrect = async function (password) {
+sellerSchema.methods.isPasswordCorrect = async function (password) {
     return await bcrypt.compare(password, this.password);
 }
 
-userSchema.methods.generateAccessToken = function () {
+sellerSchema.methods.generateAccessToken = function () {
     jwt.sign(
         {
             _id: this._id,
@@ -70,7 +60,7 @@ userSchema.methods.generateAccessToken = function () {
     )
 }
 
-userSchema.methods.generateRefreshToken = function () {
+sellerSchema.methods.generateRefreshToken = function () {
     jwt.sign(
         {
             _id: this._id
@@ -82,4 +72,4 @@ userSchema.methods.generateRefreshToken = function () {
     )
 }
 
-export const User = mongoose.model("User", userSchema);
+export const Seller = mongoose.model("Seller", sellerSchema);

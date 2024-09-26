@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
-const userProductsSchema = new Schema({
+const sellerProductsSchema = new Schema({
 
     name: {
         type: String,
@@ -12,9 +12,9 @@ const userProductsSchema = new Schema({
         type: String,           // cloudinary url
     },
 
-    user_id: {
+    email: {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Seller",
     },
 
     tags: [
@@ -32,4 +32,4 @@ const userProductsSchema = new Schema({
     }
 );
 
-export const User = mongoose.model("User", userProductsSchema);
+export const SellerPreviousDeals = mongoose.model("SellerPreviousDeals", sellerProductsSchema);
