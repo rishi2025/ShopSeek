@@ -5,7 +5,9 @@ import './index.css';
 import { LoginForm, SellerPage, SignupForm, Home, PageNotFound } from './pages/MainPage.jsx';
 import { PurchasesPage, SellerDashboard, ProfilePage } from './components/mainComponent.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import BuyerPage from './pages/BuyerPage.jsx';
 
+//TO BE CHANGED FOR BUYER
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
@@ -13,6 +15,15 @@ const router = createBrowserRouter(
       <Route path='/login' element={<LoginForm />} />
       <Route path='/signup' element={<SignupForm />} />
       <Route path='/seller' element={<SellerPage />}>
+        <Route path='' element={<SellerDashboard />} />
+        <Route path='dashboard' element={<SellerDashboard />} />
+        <Route path='products' element={<>Products Page Under construction</>} />
+        <Route path='chats' element={<>Chats Page Under construction</>} />  
+        <Route path='out-deals' element={<>Out Deals Page Under construction</>} />
+        <Route path='sells' element={<PurchasesPage />} />
+        <Route path='your-info' element={<ProfilePage />} />
+      </Route>
+      <Route path='/buyer' element={<BuyerPage />}>
         <Route path='' element={<SellerDashboard />} />
         <Route path='dashboard' element={<SellerDashboard />} />
         <Route path='products' element={<>Products Page Under construction</>} />
