@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 
 const buyerSchema = new Schema({
 
-    email: {
+    email: { 
         type: String,
         required: [true, 'Email is required...'],
         unique: true,
