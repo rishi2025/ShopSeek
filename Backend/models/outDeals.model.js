@@ -1,20 +1,16 @@
 import mongoose, { Schema } from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
-const sellerProductsSchema = new Schema({
+const outDealsSchema = new Schema({
 
-    name: {
-        type: String,
-        trim: true,
-    },
-
-    profilePic: {
-        type: String,           // cloudinary url
-    },
-
-    email: {
+    buyer_email: {
         type: Schema.Types.ObjectId,
         ref: "Seller",
+        default: "Null",
+    },
+
+    buyer_product_picture: {
+        type: String,                  // cludinary url
     },
 
     tags: [
@@ -22,6 +18,10 @@ const sellerProductsSchema = new Schema({
             type: String,
         }
     ],
+
+    title: {
+        type: String,
+    },
 
     description: {
         type: String,
@@ -32,4 +32,4 @@ const sellerProductsSchema = new Schema({
     }
 );
 
-export const SellerPreviousDeals = mongoose.model("SellerPreviousDeals", sellerProductsSchema);
+export const OutDeals = mongoose.model("OutDeals", outDealsSchema);
