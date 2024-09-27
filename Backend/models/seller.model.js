@@ -21,7 +21,6 @@ const sellerSchema = new Schema({
     password: {
         type: String,
         required: [true, 'Password is required...'],
-        isModified: false,
     },
 
     refreshToken: {
@@ -33,12 +32,12 @@ const sellerSchema = new Schema({
     }
 );
 
-sellerSchema.pre("save", async function next() {
+sellerSchema.pre("save", async function (next) {
 
     if (!this.isModified("password"))
         return next();
 
-    this.password = bcrypt.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password, 10);
     next();
 });
 
@@ -47,7 +46,7 @@ sellerSchema.methods.isPasswordCorrect = async function (password) {
 }
 
 sellerSchema.methods.generateAccessToken = function () {
-    jwt.sign(
+    return jwt.sign(
         {
             _id: this._id,
             email: this.email,
@@ -55,19 +54,19 @@ sellerSchema.methods.generateAccessToken = function () {
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn: ACCESS_TOKEN_EXPIRY
+            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
-    )
+    );
 }
 
 sellerSchema.methods.generateRefreshToken = function () {
-    jwt.sign(
+    return jwt.sign(
         {
             _id: this._id
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn: REFRESH_TOKEN_EXPIRY
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
     )
 }

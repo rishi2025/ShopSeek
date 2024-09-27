@@ -10,7 +10,7 @@ const generateAccessAndRefreshTokens = async (sellerId) => {
 
         const seller = await Seller.findById(sellerId);
 
-        const accessToken = seller.generateAcessToken();
+        const accessToken = seller.generateAccessToken();
         const refreshToken = seller.generateRefreshToken();
 
         seller.refreshToken = refreshToken;
@@ -19,6 +19,7 @@ const generateAccessAndRefreshTokens = async (sellerId) => {
         return { refreshToken, accessToken };
 
     } catch (error) {
+        console.log(error);
         throw new ApiError(500, "Something went wrong while generating Access and Refresh tokens...");
     }
 };
@@ -119,7 +120,6 @@ const loginSeller = asyncHandler(async (req, res) => {
 
     if (!checkPassword)
         throw new ApiError(401, "Wrong Password...");
-
 
     // generate access and refresh tokens
     const { refreshToken, accessToken } = await generateAccessAndRefreshTokens(seller._id);
