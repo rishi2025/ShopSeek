@@ -7,11 +7,10 @@ const sellerRouter = Router();
 sellerRouter.use(express.json());
 
 sellerRouter.route("/register").post(registerSeller);
-
 sellerRouter.route("/login").post(loginSeller);
 
 //secured routes
-sellerRouter.route("/logout").post(verifyJWT, logoutSeller);
+sellerRouter.route("/logout").post(verifyJWT, logoutSeller);      // not tested
 sellerRouter.route("/refresh-token").post(refreshAccessToken);
 
 export default sellerRouter;
