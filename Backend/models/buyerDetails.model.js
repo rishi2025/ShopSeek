@@ -33,11 +33,6 @@ const buyerDetailsSchema= new Schema({
         required: [true, 'Profile image is required'],
     },
 
-    coverImage: {
-        type: String,
-        required: [true, 'Cover imamge is required'],
-    },
-
     previousPurchases: {
         type: [String],
         default: []
