@@ -23,6 +23,11 @@ const buyerDetailsSchema= new Schema({
         trim: true 
     },
 
+    tags: {
+        type: [String],
+        default: []
+    },
+
     image: {
         type: String
     }
