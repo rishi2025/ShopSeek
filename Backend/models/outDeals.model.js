@@ -5,7 +5,7 @@ const outDealsSchema = new Schema({
 
     buyer_email: {
         type: Schema.Types.ObjectId,
-        ref: "Seller",
+        ref: "Buyer",
         default: "Null",
     },
 

@@ -330,6 +330,27 @@ const updateSellerCoverImage = asyncHandler(async (req, res) => {
     )
 });
 
+const getAllDeals = asyncHandler(async (req, res) => {
+    const seller_email = req.body;
+
+    const seller = await sellerDetailsSchema.findOne(
+        email = seller_email
+    );
+
+    if (!seller) {
+        ApiError(400, "Seller does not exist");
+    }
+
+    const deals = await PreviousDeals.findOne(
+        seller_email,
+    )
+
+    return res.status(200)
+        .json(
+            new ApiResponse(200, [], "Deals fetched succesfully...")
+        )
+})
+
 export {
     registerSeller,
     loginSeller,
@@ -340,4 +361,5 @@ export {
     updateAccountDetails,
     updateSellerAvatar,
     updateSellerCoverImage,
+    getAllDeals,
 };

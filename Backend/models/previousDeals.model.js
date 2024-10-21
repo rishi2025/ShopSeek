@@ -33,6 +33,11 @@ const previousDealsSchema = new Schema({
         type: String,
     },
 
+    status: {
+        type: String,       // Pending, Confirm, Delivered
+        require: true,
+    },
+
     title: {
         type: String,
     },

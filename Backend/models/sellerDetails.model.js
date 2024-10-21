@@ -24,12 +24,12 @@ const sellerDetailsSchema = new Schema({
     image: {
         type: String, // URL of the image
         default: null
-      },
+    },
 
     coverImage: {
         type: String, // URL of the cover image
         default: null
-      },
+    },
 }
 );
 
