@@ -16,7 +16,9 @@ import OutgoingDeals from "./OutgoingDeals.jsx";
 import Notification from "./Notification.jsx";
 import SmallBox from "./SmallBox.jsx";
 import SellerDashboard from "./SellerDashboard.jsx";
-
+import RecentOrders from "./RecentOrders.jsx";
+import BuyerDashboard from "./BuyerDashboard.jsx";
+import AddProduct from "./AddProduct.jsx";
 export {
     Button,
     Container,
@@ -36,4 +38,7 @@ export {
     Notification,
     SmallBox,
     SellerDashboard,
+    RecentOrders,
+    BuyerDashboard,
+    AddProduct,
 };
