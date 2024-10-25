@@ -349,7 +349,49 @@ const getAllDeals = asyncHandler(async (req, res) => {
         .json(
             new ApiResponse(200, [], "Deals fetched succesfully...")
         )
-})
+});
+
+// //Seller_TotalCustomer
+
+// const totalCustomer = asyncHandler(async (req, res) => {
+//     const { email } = req.body;
+
+//     // Ensure email is provided
+//     if (!email) {
+//         throw new ApiError(400, "Email is required.");
+//     }
+
+//     try {
+//         // Check if the customer already exists by email
+//         const existingCustomer = await Seller.findOne({ email });
+
+//         if (!existingCustomer) {
+//             // If customer doesn't exist, create a new entry
+//             const newCustomer = new Seller({
+//                 email,
+//                 password: "defaultPassword"  // If password is needed in schema
+//             });
+//             await newCustomer.save();
+
+//             // Get the total customer count
+//             const TotalCustomerCount = await Seller.countDocuments();  // Count total Sellers
+
+//             // Respond with the updated customer count
+//             return res.status(201).json(
+//                 new ApiResponse(201, { TotalCustomerCount }, "You have a new customer.")
+//             );
+//         } else {
+//             // If customer already exists, return an appropriate response
+//             return res.status(200).json(
+//                 new ApiResponse(200, {}, "Customer already exists.")
+//             );
+//         }
+//     } catch (error) {
+//         // Handle error if any occurs during the customer registration
+//         console.error("Error registering customer:", error.message);
+//         throw new ApiError(500, `Failed to register customer. Reason: ${error.message}`);
+//     }
+// });
 
 export {
     registerSeller,
@@ -362,4 +404,5 @@ export {
     updateSellerAvatar,
     updateSellerCoverImage,
     getAllDeals,
+    //totalCustomer,
 };

@@ -86,6 +86,8 @@ const createDeal = asyncHandler(async (req, res) => {
     );
 })
 
+
+
 export {
     getOutGoingDeals,
     createDeal,
