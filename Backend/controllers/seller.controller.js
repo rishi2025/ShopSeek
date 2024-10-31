@@ -353,58 +353,58 @@ const getAllDeals = asyncHandler(async (req, res) => {
         )
 })
 
-const updateOrCreateSellerInformation = asyncHandler(async (req, res) => {
-    const { email, phoneNumber, address, tags } = req.body;
+const updateSellerInformation = asyncHandler(async (req, res) => {
+    const { sellerId, phoneNumber, address, tags } = req.body;
 
     // Validate input
-    if (!email || !phoneNumber) {
+    if (!sellerId || !phoneNumber) {
         throw new ApiError(400, "Email and Phone Number are required.");
     }
 
     // Check if the seller exists based on email
-    let seller = await SellerDetails.findOne({ email });
+    let seller = await SellerDetails.findOne({ email: sellerId });
 
-    if (seller) {
-        // If the seller exists, update their information
-        seller.phoneNumber = phoneNumber || seller.phoneNumber;
-        seller.address = address || seller.address;
-        seller.tags = tags || seller.tags;
+    if (!seller) {
+        throw new ApiError(400, "Seller not found.");
+    } 
+    else {
+       // If the seller exists, update their information
+       seller.phoneNumber = phoneNumber || seller.phoneNumber;
+       seller.address = address || seller.address;
+       seller.tags = tags || seller.tags;
 
-        // Save the updated information to the database
-        await seller.save();
+       // Save the updated information to the database
+       const update = await seller.save();
 
-        return res.status(200).json(
-            new ApiResponse(200, seller, "Seller information updated successfully.")
-        );
-    } else {
-        // If the seller does not exist, create a new entry
-        seller = new SellerDetails({
-            email,
-            phoneNumber,
-            address,
-            tags
-        });
-
-        // Save the new seller to the database
-        await seller.save();
-
-        return res.status(201).json(
-            new ApiResponse(201, seller, "Seller information created successfully.")
-        );
+       if (update) {
+           return res.status(201).json(
+               new ApiResponse(201, update, "Seller information updated successfully.")
+           );
+       } else {
+           throw new ApiError(500, "Failed to update seller information.");
+       }
     }
 });
 
 const getTotalOrders = asyncHandler(async (req, res) => {
+    const { sellerId } = req.body;
+
+    if (!sellerId) {
+        throw new ApiError(400, "Seller ID is required.");
+    }
+
     try {
-        const totalOrders = await PreviousDeals.countDocuments({});
+        // Count documents where seller_email matches the given seller ID
+        const totalOrders = await PreviousDeals.countDocuments({ seller_email: sellerId });
+        
         return res.status(200).json(
-            new ApiResponse(200, { totalOrders }, "Total orders fetched successfully.")
+            new ApiResponse(200, { totalOrders }, "Total orders for seller fetched successfully.")
         );
     } catch (error) {
-        console.error("Error fetching total orders:", error);
-        throw new ApiError(500, "Error fetching total orders.");
+        throw new ApiError(500, "Internal Server Error, An error occured while fetching total orders");
     }
 });
+
 
 
 export {
@@ -418,6 +418,6 @@ export {
     updateSellerAvatar,
     updateSellerCoverImage,
     getAllDeals,
-    updateOrCreateSellerInformation,
+    updateSellerInformation,
     getTotalOrders
 };

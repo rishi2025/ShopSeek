@@ -3,7 +3,8 @@ import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const sellerDetailsSchema = new Schema({
     email: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "Seller",
         required: true,
         unique: true,
         trim: true,
