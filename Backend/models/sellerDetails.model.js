@@ -2,35 +2,33 @@ import mongoose, { Schema } from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const sellerDetailsSchema = new Schema({
-
     email: {
         type: Schema.Types.ObjectId,
-        ref: "Seller"
+        ref: "Seller",
+        required: true,
+        unique: true,
+        trim: true,
+        match: [/.+\@.+\..+/, "Please fill a valid email address"]
     },
-
     tags: [{
         type: String
     }],
-
     phoneNumber: {
         type: String,
-        required: [true,"Phone No. is required"]
+        required: [true, "Phone No. is required"]
     },
-
     address: {
         type: String
     },
-
     image: {
-        type: String, // URL of the image
+        type: String,
         default: null
     },
-
     coverImage: {
-        type: String, // URL of the cover image
+        type: String,
         default: null
-    },
-}
-);
+    }
+});
+
 
 export const SellerDetails = mongoose.model("SellerDetails", sellerDetailsSchema);

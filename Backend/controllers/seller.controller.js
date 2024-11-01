@@ -1,9 +1,11 @@
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from "../utils/ApiError.js";
 import { Seller } from "../models/seller.model.js";
+import { SellerDetails } from "../models/sellerDetails.model.js";
 import { uploadCloudinary } from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import jwt from "jsonwebtoken";
+import { PreviousDeals } from '../models/previousDeals.model.js';
 
 const generateAccessAndRefreshTokens = async (sellerId) => {
     try {
@@ -351,6 +353,60 @@ const getAllDeals = asyncHandler(async (req, res) => {
         )
 })
 
+const updateSellerInformation = asyncHandler(async (req, res) => {
+    const { sellerId, phoneNumber, address, tags } = req.body;
+
+    // Validate input
+    if (!sellerId || !phoneNumber) {
+        throw new ApiError(400, "Email and Phone Number are required.");
+    }
+
+    // Check if the seller exists based on email
+    let seller = await SellerDetails.findOne({ email: sellerId });
+
+    if (!seller) {
+        throw new ApiError(400, "Seller not found.");
+    } 
+    else {
+       // If the seller exists, update their information
+       seller.phoneNumber = phoneNumber || seller.phoneNumber;
+       seller.address = address || seller.address;
+       seller.tags = tags || seller.tags;
+
+       // Save the updated information to the database
+       const update = await seller.save();
+
+       if (update) {
+           return res.status(201).json(
+               new ApiResponse(201, update, "Seller information updated successfully.")
+           );
+       } else {
+           throw new ApiError(500, "Failed to update seller information.");
+       }
+    }
+});
+
+const getTotalOrders = asyncHandler(async (req, res) => {
+    const { sellerId } = req.body;
+
+    if (!sellerId) {
+        throw new ApiError(400, "Seller ID is required.");
+    }
+
+    try {
+        // Count documents where seller_email matches the given seller ID
+        const totalOrders = await PreviousDeals.countDocuments({ seller_email: sellerId });
+        
+        return res.status(200).json(
+            new ApiResponse(200, { totalOrders }, "Total orders for seller fetched successfully.")
+        );
+    } catch (error) {
+        throw new ApiError(500, "Internal Server Error, An error occured while fetching total orders");
+    }
+});
+
+
+
 export {
     registerSeller,
     loginSeller,
@@ -362,4 +418,6 @@ export {
     updateSellerAvatar,
     updateSellerCoverImage,
     getAllDeals,
+    updateSellerInformation,
+    getTotalOrders
 };

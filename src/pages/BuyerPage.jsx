@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Footer, HeaderOpaque, LeftPanel, ProfilePage, PurchasesPage, SellerDashboard } from '../components/mainComponent.jsx';
+import { Container, Footer, HeaderOpaque, LeftPanel, ProfilePage, PurchasesPage } from '../components/mainComponent.jsx';
 import { Route, Outlet } from 'react-router-dom';
 
 //TO BE COMPLETED
@@ -12,10 +12,10 @@ function BuyerPage() {
             <div className="min-h-screen flex flex-row mt-20">
                 <LeftPanel role="buyer" menuItems={[
                     { option: "DASHBOARD", url: "/dashboard" }, 
-                    { option: "PRODUCTS", url: "/products" },
+                    { option: "ADD PRODUCTS", url: "/add-products" },
                     { option: "CHATS", url: "/chats" },
-                    { option: "OUTDEALS", url: "/out-deals" },
-                    { option: "SELLS", url: "/sells" },
+                    { option: "IN DEALS", url: "/in-deals" },
+                    { option: "PURCHASES", url: "/purchases" },
                     { option: "YOUR INFO", url: "/your-info" },
                 ]}
             />

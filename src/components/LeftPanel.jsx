@@ -27,7 +27,7 @@ const LeftPanel = ({
     }
 
     return (
-        <div className="w-[13rem] h-[45.5rem] p-5 left-0 bg-gray-100">
+        <div className="w-[14rem] h-[45.5rem] p-5 left-0 bg-gray-100">
             <div className="text-center mb-5 relative">
                 <img
                     src={userImgUrl}
