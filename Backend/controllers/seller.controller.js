@@ -252,27 +252,27 @@ const getCurrentSeller = asyncHandler(async (req, res) => {
         );
 });
 
-const updateAccountDetails = asyncHandler(async (req, res) => {
-    const { name, email } = req.body;
+// const updateAccountDetails = asyncHandler(async (req, res) => {
+//     const { name, email } = req.body;
 
-    if (!name && !email)
-        throw new ApiError(400, "All fields are required...");
+//     if (!name && !email)
+//         throw new ApiError(400, "All fields are required...");
 
-    const seller = await Seller.findByIdAndUpdate(
-        req.seller?._id,
-        {
-            $set: {
-                name,
-                email,
-            }
-        },
-        { new: true },
-    ).select("-password -refreshToken");
+//     const seller = await Seller.findByIdAndUpdate(
+//         req.seller?._id,
+//         {
+//             $set: {
+//                 name,
+//                 email,
+//             }
+//         },
+//         { new: true },
+//     ).select("-password -refreshToken");
 
-    return res
-        .status(200)
-        .json(new ApiResponse(200, seller, "Account details updated..."));
-});
+//     return res
+//         .status(200)
+//         .json(new ApiResponse(200, seller, "Account details updated..."));
+// });
 
 const updateSellerAvatar = asyncHandler(async (req, res) => {
     const avatarLocalPath = req.file?.path;
@@ -414,7 +414,6 @@ export {
     refreshAccessToken,
     changeCurrentPassword,
     getCurrentSeller,
-    updateAccountDetails,
     updateSellerAvatar,
     updateSellerCoverImage,
     getAllDeals,

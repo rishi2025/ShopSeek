@@ -13,25 +13,29 @@ function Signup() {
 
     const create = async (data) => {
         setError("");
-        // try {
-
-        //     const userData = await authService.createAccount(data);
-
-        //     if (userData) {
-        //         const user = await authService.getCurrentUser();
-        //         if (user)
-        //             dispatch(authLogin(user));
-
-        //         navigate("/");
-        //     }
-
-
-        // } catch(error) {
-        //     setError(error.message);
-        // }
-
-        navigate(`/${role}`);
-    }
+        try {
+            const requestOptions = {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+    
+            const response = await fetch(`http://localhost:8000/api/v1/${role}/register`, requestOptions);
+    
+            if (!response.ok)
+                throw new Error(response.statusText || "Failed to register, Try again");
+    
+            const user = await response.json();
+    
+            if (user) {
+                navigate(`/login`);
+            }
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     return (
         <div className="flex items-center justify-center">

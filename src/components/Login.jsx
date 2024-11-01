@@ -12,27 +12,67 @@ function Login() {
     const [error, setError] = useState("");
     const [role, setRole] = useState("seller");
 
+    // const login = async (data) => {
+    //     setError("");
+    //     try {
+
+    //         // const session = await authService.login(data);
+
+    //         // if (session) {
+    //         //     const userData = await authService.getCurrentUser();
+    //         //     if (userData)
+    //         //         dispatch(authLogin(userData));
+
+    //         //     navigate("/");
+    //         // }
+
+    //         const requestOptions = {
+    //             method: 'POST',
+    //             body: JSON.stringify(data),
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         }
+
+    //         const user = await fetch(`http://localhost:8000/api/v1/${role}/login`, requestOptions)
+    //             .then(res => {
+    //                 if (!res.ok)
+    //                     throw new Error(res.message);
+
+    //                 navigate(`/${role}/`);
+    //                 return res.json();
+    //             });
+
+    //     } catch(error) {
+    //         setError(error.message);
+    //     }
+    // }
+
     const login = async (data) => {
         setError("");
-        // try {
-
-        //     const session = await authService.login(data);
-
-        //     if (session) {
-        //         const userData = await authService.getCurrentUser();
-        //         if (userData)
-        //             dispatch(authLogin(userData));
-
-        //         navigate("/");
-        //     }
-
-
-        // } catch(error) {
-        //     setError(error.message);
-        // }
-
-        navigate(`/${role}`);
-    }
+        try {
+            const requestOptions = {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+    
+            const response = await fetch(`http://localhost:8000/api/v1/${role}/login`, requestOptions);
+    
+            if (!response.ok)
+                throw new Error(response.statusText || "Failed to log in");
+    
+            const user = await response.json();
+    
+            if (user) {
+                navigate(`/${role}/`);
+            }
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     return (
         <div className='flex items-center justify-center w-full'>

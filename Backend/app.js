@@ -20,8 +20,10 @@ app.use(express.json({
 //--------- ROUTES ---------
 // routes import
 import sellerRouter from './routes/seller.routes.js';
+import outDealRouter from "./routes/outDeals.routes.js";
 
 // routes declaration
-app.use("/api/v1/sellers", sellerRouter);
+app.use("/api/v1/seller", sellerRouter);
+app.use("/api/v1/seller", outDealRouter);
 
 export { app };
