@@ -1,5 +1,6 @@
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from "../utils/ApiError.js";
+import { PreviousDeals } from "../models/previousDeals.model.js";
 import { Seller } from "../models/seller.model.js";
 import { uploadCloudinary } from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
@@ -35,7 +36,7 @@ const getOutGoingDeals = asyncHandler(async (req, res) => {
 
 const createDeal = asyncHandler(async (req, res) => {
     const { sellerEmail, buyerEmail, sellerProductPicture, buyerProductPicture,
-        tags, price, status, title, rating, review } = req.body();
+        tags, price, status, title, rating, review } = req.body;
 
     if (!sellerEmail) {
         throw new ApiError(400, "Bad Request - Seller Email not found while creating the deal.");
@@ -53,7 +54,7 @@ const createDeal = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Bad Request - No Buyer Product Picture found.");
     }
 
-    if (!tags || tags.empty()) {
+    if (!tags) {
         throw new ApiError(400, "Bad Request - Product should have atleast 1 tag.");
     }
 
@@ -61,9 +62,21 @@ const createDeal = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Bad Request - Price not found or Deal was not confirmed.");
     }
 
+    const seller = await Seller.findOne({ email: sellerEmail });
+    const buyer = await Seller.findOne({ email: buyerEmail });
+    console.log(buyer);
+
+    if (!seller) {
+        throw new ApiError(404, `Seller with email ${sellerEmail} not found.`);
+    }
+
+    if (!buyer) {
+        throw new ApiError(404, `Buyer with email ${buyerEmail} not found.`);
+    }
+
     const currentDeal = PreviousDeals.create = await PreviousDeals.create({
-        seller_email: sellerEmail,
-        buyer_email: buyerEmail,
+        seller_email: seller._id,
+        buyer_email: buyer._id,
         seller_product_picture: sellerProductPicture,
         buyer_product_picture: buyerProductPicture,
         tags,
@@ -74,7 +87,7 @@ const createDeal = asyncHandler(async (req, res) => {
         review,
     });
 
-    const CurrentCompletedDeal = await Seller.findById(currentDeal._id);
+    const CurrentCompletedDeal = await PreviousDeals.findById(currentDeal._id);
 
     if (!CurrentCompletedDeal)
         throw new ApiError(500, "Something went wrong while completing deal")

@@ -6,13 +6,13 @@ const previousDealsSchema = new Schema({
     seller_email: {
         type: Schema.Types.ObjectId,
         ref: "Seller",
-        default: "Null",
+        default: null,
     },
 
     buyer_email: {
         type: Schema.Types.ObjectId,
         ref: "Seller",
-        default: "Null",
+        default: null,
     },
 
     seller_product_picture: {
