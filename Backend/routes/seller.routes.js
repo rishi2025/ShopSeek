@@ -1,5 +1,6 @@
 import { Router } from "express";
 import express from "express";
+
 import { getTotalOrders, updateSellerInformation, loginSeller, logoutSeller, refreshAccessToken, registerSeller } from "../controllers/seller.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 

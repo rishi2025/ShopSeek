@@ -57,17 +57,17 @@ function Home() {
                 </div>
                 <Container className="w-full h-[27rem] bg-[#D4BFFF] shadow-lg shadow-[#333] font-gruppo text-3xl flex justify-evenly items-center">
                     <Container className='w-[60rem] font-bold'>
-                        The World Economic Forum, Accenture and Microsoft have built a
-                        purpose-driven platform in the metaverse to drive action and 
-                        cooperation and to revolutionize progress.. 
+                                    Welcome to ShopSeek, your direct connection to local shopkeepers!  Our platform 
+                        empowers customers to share their product needs through images, making it easier 
+                        for shopkeepers to check availability and provide personalized responses.
                         <br /><br />
-                        As outer space gets more crowded and contested, QuSecure 
-                        is protecting communications and data transmission with the 
-                        agility required for the world of post-quantum computing. 
+                        With ShopSeek, customers gain access to local deals and the convenience of direct 
+                        messaging for instant inquiries, product details, and price negotiations. We're 
+                        bridging the gap between shopkeepers and customers for a seamless and hassle-free 
+                        shopping experience.
                         <br /><br />
-                        The World Economic Forum, Accenture and Microsoft have built a 
-                        purpose-driven platform in the metaverse to drive action and 
-                        cooperation and to revolutionize progress..
+                        Experience the new era of local shopping with ShopSeek, where convenience meets 
+                        community support in every transaction!
                     </Container>
                     <img src={Trolley} className='h-72'/>
                 </Container>
@@ -77,13 +77,41 @@ function Home() {
             {/* Contact Us */}
             <div id="Contact"></div>
             <Container className="h-[40rem] bg-customColors-offWhite w-full flex flex-col items-center" px="px-0" >
-                <div className='font-fira text-3xl h-16 w-52 mb-10 flex justify-center items-end text-customColors-lightPurple'>
-                    Contact Us
+                <div className='font-fira text-3xl h-16 w-[60rem] flex justify-center items-center mb-10 text-customColors-lightPurple'>
+                    We'd Love to Hear from You!
                 </div>
-                <div className="w-[40rem] h-[27rem] bg-[#D4BFFF] font-gruppo rounded-lg bg-gradient-to-r shadow-lg shadow-[#333] from-customColors-radialPurpleL to-customColors-lightPurple text-3xl p-8" px='px-8'>
-                    <div className='font-fira text-3xl text-customColors-offWhite'>
+                <div className="w-[40rem] auto bg-[#D4BFFF] font-gruppo rounded-lg bg-gradient-to-r shadow-lg shadow-[#333] from-customColors-radialPurpleL to-customColors-lightPurple text-3xl p-8" px='px-8'>
+                    <div className='font-fira text-3xl text-customColors-offWhite mb-4'>
                         Contact Us
                     </div>
+                    <form class="w-full flex flex-col gap-4">
+            <input 
+                type="text" 
+                placeholder="Your Name" 
+                className="p-3 rounded-md bg-white text-black"
+                required
+            />
+            <input 
+                type="email" 
+                placeholder="Your Email" 
+                className="p-3 rounded-md bg-white text-black"
+                required
+            />
+            <textarea 
+                placeholder="Your Message" 
+                className="p-3 rounded-md bg-white text-black h-24"
+                required
+            ></textarea>
+            <button 
+                type="submit" 
+                className="p-3 mt-4 bg-customColors-lightPurple rounded-md text-white hover:bg-customColors-radialPurpleL transition-colors duration-300"
+            >
+                Send Message
+            </button>
+        </form>
+        <div className='mt-8 text-lg text-customColors-offWhite text-center'>
+            Or reach out at <span className="font-bold">shopseek.customerservice@gmail.com</span>
+        </div>
                 </div>
             </Container>
             <Footer />

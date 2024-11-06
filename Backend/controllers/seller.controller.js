@@ -351,7 +351,7 @@ const getAllDeals = asyncHandler(async (req, res) => {
         .json(
             new ApiResponse(200, [], "Deals fetched succesfully...")
         )
-})
+});
 
 const updateSellerInformation = asyncHandler(async (req, res) => {
     const { sellerId, phoneNumber, address, tags } = req.body;
