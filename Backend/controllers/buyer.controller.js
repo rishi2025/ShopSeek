@@ -62,9 +62,38 @@ const registerBuyer = asyncHandler(async (req, res) => {
     // return response
     return res.status(201).json(
         new ApiResponse(200, createdSeller, "buyer registered successfully !!!")
-    )
+    );
+});
+
+const addProductRequest = asyncHandler(async (req, res) => {
+
+    const { buyer_email, buyer_product_picture, tags, title } = req.body;
+
+    if (
+        [buyer_email, buyer_product_picture, tags, title].some((field) => field?.trim() === "")
+    ) {
+        throw new ApiError(400, "All fields are required...");
+    }
+
+    const product = await PreviousDeals.create({
+        buyer_email,
+        buyer_product_picture,
+        tags,
+        title
+    });
+
+    const createdProduct = await PreviousDeals.findById(product._id);
+
+    if (!createdProduct)
+        throw new ApiError(500, "Something went wrong while creating product request...");
+
+    // return response
+    return res.status(201).json(
+        new ApiResponse(200, createdProduct, "Product Request Notification Sent !!!")
+    );
 });
 
 export {
-    registerBuyer
+    registerBuyer,
+    addProductRequest,
 };
