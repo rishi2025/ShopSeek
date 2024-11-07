@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Logo, Button, Input } from './mainComponent.jsx';
 import { ShopSeekLogo } from "../Images/MainImage.jsx";
 import { useForm } from "react-hook-form";
+import { BASE_URL } from "../Constants.jsx";
 
 function Login() {
 
@@ -59,13 +60,13 @@ function Login() {
                 },
             };
     
-            const response = await fetch(`http://localhost:8000/api/v1/${role}/login`, requestOptions);
+            const response = await fetch(`${BASE_URL}/${role}/login`, requestOptions);
     
             if (!response.ok)
                 throw new Error(response.statusText || "Failed to log in");
     
             const user = await response.json();
-    
+
             if (user) {
                 navigate(`/${role}/`);
             }

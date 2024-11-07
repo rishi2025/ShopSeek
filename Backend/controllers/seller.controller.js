@@ -368,21 +368,21 @@ const updateSellerInformation = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Seller not found.");
     } 
     else {
-       // If the seller exists, update their information
-       seller.phoneNumber = phoneNumber || seller.phoneNumber;
-       seller.address = address || seller.address;
-       seller.tags = tags || seller.tags;
+        // If the seller exists, update their information
+        seller.phoneNumber = phoneNumber || seller.phoneNumber;
+        seller.address = address || seller.address;
+        seller.tags = tags || seller.tags;
 
-       // Save the updated information to the database
-       const update = await seller.save();
+        // Save the updated information to the database
+        const update = await seller.save();
 
-       if (update) {
-           return res.status(201).json(
-               new ApiResponse(201, update, "Seller information updated successfully.")
-           );
-       } else {
-           throw new ApiError(500, "Failed to update seller information.");
-       }
+        if (update) {
+            return res.status(201).json(
+                new ApiResponse(201, update, "Seller information updated successfully.")
+            );
+        } else {
+            throw new ApiError(500, "Failed to update seller information.");
+        }
     }
 });
 
