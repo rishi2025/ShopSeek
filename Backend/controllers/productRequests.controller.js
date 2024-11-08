@@ -1,17 +1,18 @@
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from "../utils/ApiError.js";
-import { Seller } from "../models/seller.model.js";
+import {SellerDetails} from "../models/sellerDetails.model.js";
+import { Seller } from '../models/seller.model.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import { PreviousDeals } from '../models/previousDeals.model.js';
 
 const getProductRequests = asyncHandler(async (req, res) => {
-    const { sellerEmail } = req.body;
+    const sellerObj = req.body;
 
-    if (!sellerEmail) {
-        throw new ApiError(400, "Email not found");
+    if (!sellerObj) {
+        throw new ApiError(400, "Seller not found");
     }
-
-    const seller = await Seller.findOne({ email: sellerEmail }).select('tags').lean();
+    
+    const seller = await SellerDetails.findOne({ email: sellerObj._id }).select('tags').lean();
     if (!seller || !seller.tags) {
         throw new ApiError(404, "Seller not found or seller tags not available");
     }
