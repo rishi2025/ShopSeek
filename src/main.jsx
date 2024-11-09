@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css';
 import { LoginForm, SellerPage, SignupForm, Home, PageNotFound } from './pages/MainPage.jsx';
-import { PurchasesPage, SellerDashboard, BuyerDashboard, ProfilePage, AddProduct } from './components/mainComponent.jsx'
+import { PurchasesPage, SellerDashboard, BuyerDashboard, BuyerProfilePage, SellerProfilePage, AddProduct } from './components/mainComponent.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import BuyerPage from './pages/BuyerPage.jsx';
 
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
         <Route path='chats' element={<>Chats Page Under construction</>} />  
         <Route path='out-deals' element={<>Out Deals Page Under construction</>} />
         <Route path='sells' element={<PurchasesPage />} />
-        <Route path='your-info' element={<ProfilePage />} />
+        <Route path='your-info' element={<SellerProfilePage />} />
       </Route>
       <Route path='/buyer' element={<BuyerPage />}>
         <Route path='' element={<BuyerDashboard />} />
@@ -30,7 +30,7 @@ const router = createBrowserRouter(
         <Route path='chats' element={<>Chats Page Under construction</>} />  
         <Route path='in-deals' element={<>Out Deals Page Under construction</>} />
         <Route path='purchases' element={<PurchasesPage />} />
-        <Route path='your-info' element={<ProfilePage />} />
+        <Route path='your-info' element={<BuyerProfilePage />} />
       </Route>
       <Route path='*' element={<PageNotFound />} />
     </Route>

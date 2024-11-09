@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Footer, HeaderOpaque, LeftPanel, ProfilePage, PurchasesPage, SellerDashboard } from '../components/mainComponent.jsx';
+import { Container, Footer, HeaderOpaque, LeftPanel } from '../components/mainComponent.jsx';
 import { Route, Outlet } from 'react-router-dom';
 
 function SellerPage() {
