@@ -6,7 +6,8 @@ import Footer from "./Footer.jsx";
 import PurchasedCard from "./PurchasedCard.jsx";
 import LeftPanel from "./LeftPanel.jsx";
 import HeaderOpaque from "./HeaderOpaque.jsx";
-import ProfilePage from "./ProfileForm.jsx";
+import SellerProfilePage from "./SellerProfileForm.jsx";
+import BuyerProfilePage from "./BuyerProfileForm.jsx";
 import PurchasesPage from "./PurchasesPage.jsx";
 import Signup from "./Signup.jsx";
 import Input from "./Input.jsx";
@@ -28,7 +29,8 @@ export {
     PurchasedCard,
     LeftPanel,
     HeaderOpaque,
-    ProfilePage,
+    SellerProfilePage,
+    BuyerProfilePage,
     PurchasesPage,
     Signup,
     Input,

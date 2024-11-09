@@ -21,9 +21,11 @@ app.use(express.json({
 // routes import
 import sellerRouter from './routes/seller.routes.js';
 import outDealRouter from "./routes/outDeals.routes.js";
+import productRequestsRoute from "./routes/productRequests.routes.js";
 
 // routes declaration
 app.use("/api/v1/seller", sellerRouter);
 app.use("/api/v1/seller", outDealRouter);
+app.use("/api/v1/seller", productRequestsRoute);
 
 export { app };

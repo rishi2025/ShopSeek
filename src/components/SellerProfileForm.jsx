@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getCurrentSeller } from '../../Backend/controllers/seller.controller';
 
 const Tag = ({ tag, onDelete }) => {
     return (
@@ -13,7 +14,40 @@ const Tag = ({ tag, onDelete }) => {
     );
 };
 
-const ProfilePage = () => {
+const sellerDetails = async () => {
+    setErrorProducts("");
+    try {
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({
+                sellerId: "66f65e2969020681ed755dc3"
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        const response = await fetch(`${BASE_URL}/seller/current-seller-info`, requestOptions);
+
+        if (!response.ok)
+            throw new Error("Products requests fetch failed");
+
+        console.log(orders);
+
+        const productRequestsCollection = await response.json();
+
+        // setProductsCollection(productRequestsCollection.data.totalOrders);
+    } catch (error) {
+        console.log(error.message);
+        setErrorProducts(error.message);
+    }
+}
+
+useEffect(() => {
+    sellerDetails();
+}, [])
+
+const SellerProfilePage = () => {
     const [tags, setTags] = useState([]);
     const [newTag, setNewTag] = useState('');
 
@@ -103,4 +137,4 @@ const ProfilePage = () => {
     );
 }
 
-export default ProfilePage;
+export default SellerProfilePage;

@@ -31,7 +31,7 @@ const ProductRequest = ({ headings = { product: 'Product', categories: 'Categori
     },
 ] }) => {
     return (
-        <div className="bg-white shadow-lg rounded-lg p-4 border-2 overflow-y-scroll h-96">
+        <div className="bg-white shadow-lg rounded-lg p-4 border-2 overflow-y-scroll h-96 w-[48%]">
             <h2 className="text-lg font-semibold mb-4">Product Requests</h2>
             <table className="w-full text-left">
                 <thead>
@@ -42,7 +42,8 @@ const ProductRequest = ({ headings = { product: 'Product', categories: 'Categori
                     </tr>
                 </thead>
                 <tbody>
-                    {products ? (
+                    {
+                        products.length ? (
                         products.map((product, index) => (
                             <tr key={index} className="border-b border-gray-200">
                                 <td className="py-3 pr-4 flex flex-row gap-[0.5rem] justify-around items-center">
@@ -66,13 +67,13 @@ const ProductRequest = ({ headings = { product: 'Product', categories: 'Categori
                                 </td>
                             </tr>
                         ))
-                    ) : (
+                    ) : 
                         <tr>
                             <td colspan="4" className="py-4 text-center">
-                                <h1 className="text-xl font-semibold text-gray-700">No products to view</h1>
+                                <h1 className="text-xl font-semibold text-gray-700 w-full">No products requests</h1>
                             </td>
                         </tr>
-                    )}
+                    }
                 </tbody>
             </table>
         </div>

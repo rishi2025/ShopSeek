@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Footer, HeaderOpaque, LeftPanel, ProfilePage, PurchasesPage } from '../components/mainComponent.jsx';
+import { Container, Footer, HeaderOpaque, LeftPanel, BuyerProfilePage, PurchasesPage } from '../components/mainComponent.jsx';
 import { Route, Outlet } from 'react-router-dom';
 
 //TO BE COMPLETED

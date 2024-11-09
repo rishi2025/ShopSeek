@@ -241,12 +241,23 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 });
 
 const getCurrentSeller = asyncHandler(async (req, res) => {
+
+    const {sellerId} = req.body;
+
+    if (!sellerId) {
+        throw new ApiError(400, "Seller ID is required.");
+    }
+
+    const seller = await SellerDetails.find({ email: sellerId })
+    if (!seller)
+        throw new ApiError(500, "Internal Server error while getting current Seller...");
+
     return res
         .status(200)
         .json(
             new ApiResponse(
                 200,
-                req.seller,
+                seller,
                 "Current seller fetched successfully"
             )
         );
@@ -387,7 +398,7 @@ const updateSellerInformation = asyncHandler(async (req, res) => {
 });
 
 const getTotalOrders = asyncHandler(async (req, res) => {
-    const { sellerId } = req.body;
+    const {sellerId} = req.body;
 
     if (!sellerId) {
         throw new ApiError(400, "Seller ID is required.");
@@ -396,11 +407,12 @@ const getTotalOrders = asyncHandler(async (req, res) => {
     try {
         // Count documents where seller_email matches the given seller ID
         const totalOrders = await PreviousDeals.countDocuments({ seller_email: sellerId });
-        
+
         return res.status(200).json(
             new ApiResponse(200, { totalOrders }, "Total orders for seller fetched successfully.")
         );
     } catch (error) {
+        console.log(error);
         throw new ApiError(500, "Internal Server Error, An error occured while fetching total orders");
     }
 });

@@ -5,6 +5,6 @@ import { getProductRequests } from "../controllers/productRequests.controller.js
 const productRequestsRoute = Router();
 productRequestsRoute.use(express.json());
 
-productRequestsRoute.route("/productRequests").post(getProductRequests);
+productRequestsRoute.route("/product-requests").post(getProductRequests);
 
 export default productRequestsRoute;

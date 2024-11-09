@@ -63,7 +63,7 @@ function Login() {
             const response = await fetch(`${BASE_URL}/${role}/login`, requestOptions);
     
             if (!response.ok)
-                throw new Error(response.statusText || "Failed to log in");
+                throw new Error("Wrong Username or Password");
     
             const user = await response.json();
 
