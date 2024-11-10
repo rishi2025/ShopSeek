@@ -242,22 +242,27 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 
 const getCurrentSeller = asyncHandler(async (req, res) => {
 
-    const {sellerId} = req.body;
+    const { sellerId } = req.body;
 
     if (!sellerId) {
-        throw new ApiError(400, "Seller ID is required.");
+        throw new ApiError(400, "Seller Email is required.");
     }
 
     const seller = await SellerDetails.find({ email: sellerId })
     if (!seller)
         throw new ApiError(500, "Internal Server error while getting current Seller...");
 
+    const [sellerCredentials] = await Seller.find({
+        _id: sellerId
+    });
+    console.log();
+
     return res
         .status(200)
         .json(
             new ApiResponse(
                 200,
-                seller,
+                {...seller, emailId: sellerCredentials.email},
                 "Current seller fetched successfully"
             )
         );

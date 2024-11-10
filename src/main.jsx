@@ -18,7 +18,7 @@ const router = createBrowserRouter(
         <Route path='' element={<SellerDashboard />} />
         <Route path='dashboard' element={<SellerDashboard />} />
         <Route path='products' element={<>Products Page Under construction</>} />
-        <Route path='chats' element={<>Chats Page Under construction</>} />  
+        <Route path='chats' element={<>Chats Page Under construction</>} />
         <Route path='out-deals' element={<>Out Deals Page Under construction</>} />
         <Route path='sells' element={<PurchasesPage />} />
         <Route path='your-info' element={<SellerProfilePage />} />
@@ -26,8 +26,8 @@ const router = createBrowserRouter(
       <Route path='/buyer' element={<BuyerPage />}>
         <Route path='' element={<BuyerDashboard />} />
         <Route path='dashboard' element={<BuyerDashboard />} />
-        <Route path='add-products' element={<AddProduct/>} />
-        <Route path='chats' element={<>Chats Page Under construction</>} />  
+        <Route path='add-products' element={<AddProduct />} />
+        <Route path='chats' element={<>Chats Page Under construction</>} />
         <Route path='in-deals' element={<>Out Deals Page Under construction</>} />
         <Route path='purchases' element={<PurchasesPage />} />
         <Route path='your-info' element={<BuyerProfilePage />} />
@@ -35,10 +35,10 @@ const router = createBrowserRouter(
       <Route path='*' element={<PageNotFound />} />
     </Route>
   )
-)
+);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </React.StrictMode>,
-)
+);

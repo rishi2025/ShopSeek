@@ -29,7 +29,7 @@ const ProductRequest = ({ headings = { product: 'Product', categories: 'Categori
             { name: 'Size', value: 'L XL XXL' },
         ],
     },
-] }) => {
+] }) => {    
     return (
         <div className="bg-white shadow-lg rounded-lg p-4 border-2 overflow-y-scroll h-96 w-[48%]">
             <h2 className="text-lg font-semibold mb-4">Product Requests</h2>
@@ -51,11 +51,11 @@ const ProductRequest = ({ headings = { product: 'Product', categories: 'Categori
                                     <div className="text-sm font-medium flex align-middle text-gray-800">{product.name}</div>
                                 </td>
                                 <td className="py-3 px-4">
-                                    <div className="text-xs text-gray-500">{product.categories.join(', ')}</div>
+                                    <div className="text-xs text-gray-500">{product?.categories?.join(', ')}</div>
                                 </td>
                                 <td className="py-3 px-4">
                                     <div className="flex space-x-2">
-                                        {product.attributes.map((attr, i) => (
+                                        {product?.attributes?.map((attr, i) => (
                                             <div key={i} className="text-xs text-gray-600">
                                                 {`${attr.name}: ${attr.value}`}
                                             </div>
@@ -69,7 +69,7 @@ const ProductRequest = ({ headings = { product: 'Product', categories: 'Categori
                         ))
                     ) : 
                         <tr>
-                            <td colspan="4" className="py-4 text-center">
+                            <td colSpan="4" className="py-4 text-center">
                                 <h1 className="text-xl font-semibold text-gray-700 w-full">No products requests</h1>
                             </td>
                         </tr>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getCurrentSeller } from '../../Backend/controllers/seller.controller';
 
 const Tag = ({ tag, onDelete }) => {
     return (
@@ -43,10 +42,6 @@ const sellerDetails = async () => {
     }
 }
 
-useEffect(() => {
-    sellerDetails();
-}, [])
-
 const BuyerProfilePage = () => {
     const [tags, setTags] = useState([]);
     const [newTag, setNewTag] = useState('');
@@ -69,6 +64,11 @@ const BuyerProfilePage = () => {
             handleAddTag();
         }
     };
+
+    
+    useEffect(() => {
+        sellerDetails();
+    }, [])
 
     return (
         <div className="relative h-[45.5rem] bg-customColors-fadedPurple py-12 px-4 sm:px-6 lg:px-8">

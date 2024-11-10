@@ -83,12 +83,23 @@ function SellerDashboard() {
     
             if (!response.ok)
                 throw new Error("Products requests fetch failed");
-
-            console.log(orders);
     
-            const productRequestsCollection = await response.json();
+            const { productRequests } = (await response.json()).data;
 
-            // setProductsCollection(productRequestsCollection.data.totalOrders);
+            let newProductRequest = [];
+            productRequests.forEach(element => {
+                const request = {
+                    name: element.title,
+                    image: element.buyer_product_picture,
+                    attributes: element.attributes,
+                    categories: element.tags,
+                }
+
+                newProductRequest.push(request);
+            });
+
+            setProductsCollection(newProductRequest);
+
         } catch (error) {
             console.log(error.message);
             setErrorProducts(error.message);

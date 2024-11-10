@@ -9,7 +9,7 @@ sellerRouter.use(express.json());
 
 sellerRouter.route("/register").post(registerSeller);
 sellerRouter.route("/login").post(loginSeller);
-sellerRouter.route("/sellerInformation").post(updateSellerInformation);   //tested
+sellerRouter.route("/update-seller-information").post(updateSellerInformation);   //tested
 sellerRouter.route("/total-orders").post(getTotalOrders);        //tested
 sellerRouter.route("/current-seller-info").post(getCurrentSeller); 
 
