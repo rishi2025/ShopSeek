@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css';
 import { LoginForm, SellerPage, SignupForm, Home, PageNotFound } from './pages/MainPage.jsx';
-import { PurchasesPage, SellerDashboard, BuyerDashboard, BuyerProfilePage, SellerProfilePage, AddProduct } from './components/mainComponent.jsx'
+import { PurchasesPage,OutDealsPage,ProductPage, SellerDashboard, BuyerDashboard, BuyerProfilePage, SellerProfilePage, AddProduct } from './components/mainComponent.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import BuyerPage from './pages/BuyerPage.jsx';
 
@@ -17,9 +17,9 @@ const router = createBrowserRouter(
       <Route path='/seller' element={<SellerPage />}>
         <Route path='' element={<SellerDashboard />} />
         <Route path='dashboard' element={<SellerDashboard />} />
-        <Route path='products' element={<>Products Page Under construction</>} />
+        <Route path='products' element={<ProductPage/>} />
         <Route path='chats' element={<>Chats Page Under construction</>} />
-        <Route path='out-deals' element={<>Out Deals Page Under construction</>} />
+        <Route path='out-deals' element={<OutDealsPage/>} />
         <Route path='sells' element={<PurchasesPage />} />
         <Route path='your-info' element={<SellerProfilePage />} />
       </Route>
