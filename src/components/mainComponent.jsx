@@ -20,6 +20,10 @@ import SellerDashboard from "./SellerDashboard.jsx";
 import RecentOrders from "./RecentOrders.jsx";
 import BuyerDashboard from "./BuyerDashboard.jsx";
 import AddProduct from "./AddProduct.jsx";
+import OutDeals from "./OutDeals.jsx";
+import OutDealsPage from "./OutDealsPage.jsx";
+import ProductCard from "./ProductCard.jsx";
+import ProductPage from "./ProductPage.jsx";
 export {
     Button,
     Container,
@@ -43,4 +47,8 @@ export {
     RecentOrders,
     BuyerDashboard,
     AddProduct,
+    OutDeals,
+    OutDealsPage,
+    ProductCard,
+    ProductPage,
 };
