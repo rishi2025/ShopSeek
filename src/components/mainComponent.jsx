@@ -24,6 +24,8 @@ import OutDeals from "./OutDeals.jsx";
 import OutDealsPage from "./OutDealsPage.jsx";
 import ProductCard from "./ProductCard.jsx";
 import ProductPage from "./ProductPage.jsx";
+import InDealsCard from "./InDealsCard.jsx";
+import InDealsPage from "./InDealsPage.jsx";
 export {
     Button,
     Container,
@@ -51,4 +53,6 @@ export {
     OutDealsPage,
     ProductCard,
     ProductPage,
+    InDealsCard,
+    InDealsPage,
 };

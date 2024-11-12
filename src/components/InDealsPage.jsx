@@ -1,59 +1,53 @@
 import React from 'react';
-import {ProductCard, Container} from './mainComponent';
+import {InDealsCard, Container} from './mainComponent';
 
-function ProductPage(){
+function InDealsPage(){
 return(
     <Container className='flex flex-row flex-wrap bg-[#F1EAFF] gap-y-8 h-[45.5rem] overflow-y-scroll    '>
-    <ProductCard 
+    <InDealsCard 
   title="ADIDAS SNEAKERS"
   imageUrl="https://i.ibb.co/gt7gzBn/image-42.png"
   tags={["Sneakers", "Trendy", "New Arrival"]}
-  revertedOn="01-08-2024"
+  priceOffer="2001"
   size="12"
-  description="Stylish and comfortable Adidas sneakers perfect for everyday wear."
     />
-    <ProductCard 
+    <InDealsCard 
   title="ADIDAS SNEAKERS"
   imageUrl="https://i.ibb.co/gt7gzBn/image-42.png"
   tags={["Sneakers", "Trendy", "New Arrival"]}
-  revertedOn="01-08-2024"
+  priceOffer="2001"
   size="12"
-  description="Stylish and comfortable Adidas sneakers perfect for everyday wear."
     />
-    <ProductCard 
+    <InDealsCard 
   title="ADIDAS SNEAKERS"
   imageUrl="https://i.ibb.co/gt7gzBn/image-42.png"
   tags={["New Arrival","Trendy", "New Arrival"]}
-  revertedOn="01-08-2024"
+  priceOffer="2001"
   size="12"
-  description="Stylish and comfortable Adidas sneakers perfect for everyday wear."
     />
-    <ProductCard 
+    <InDealsCard 
   title="ADIDAS SNEAKERS"
   imageUrl="https://i.ibb.co/gt7gzBn/image-42.png"
   tags={["Sneakers", "Trendy", "New Arrival"]}
-  revertedOn="01-08-2024"
+  priceOffer="2001"
   size="12"
-  description="Stylish and comfortable Adidas sneakers perfect for everyday wear."
     />
-    <ProductCard 
+    <InDealsCard 
   title="ADIDAS SNEAKERS"
   imageUrl="https://i.ibb.co/gt7gzBn/image-42.png"
   tags={["Sneakers", "Trendy", "New Arrival"]}
-  revertedOn="01-08-2024"
+  priceOffer="2001"
   size="12"
-  description="Stylish and comfortable Adidas sneakers perfect for everyday wear."
     />
-    <ProductCard 
+    <InDealsCard 
   title="ADIDAS SNEAKERS"
   imageUrl="https://i.ibb.co/gt7gzBn/image-42.png"
   tags={["Sneakers", "Trendy", "New Arrival"]}
-  revertedOn="01-08-2024"
+  priceOffer="2001"
   size="12"
-  description="Stylish and comfortable Adidas sneakers perfect for everyday wear."
     />
 
     </Container>
 )}
 
-export default ProductPage;
+export default InDealsPage;
