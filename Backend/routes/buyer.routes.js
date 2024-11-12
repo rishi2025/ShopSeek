@@ -9,6 +9,7 @@ buyerRouter.use(express.json());
 
 buyerRouter.route("/register").post(registerBuyer);
 buyerRouter.route("/login").post(loginBuyer);
-buyerRouter.route("/updateBuyerInfo").post(updateBuyerInfo);
+buyerRouter.route("/update-buyer-info").post(updateBuyerInfo);
+buyerRouter.route("/add-product").post(addProductRequest);
 
 export default buyerRouter;

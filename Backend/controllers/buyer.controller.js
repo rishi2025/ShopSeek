@@ -1,6 +1,7 @@
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from "../utils/ApiError.js";
 import { Buyer } from '../models/buyer.model.js';
+import { PreviousDeals } from '../models/previousDeals.model.js';
 import { BuyerDetails } from "../models/buyerDetails.model.js";
 import { uploadCloudinary } from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
@@ -65,7 +66,7 @@ const registerBuyer = asyncHandler(async (req, res) => {
 
     // return response
     return res.status(201).json(
-        new ApiResponse(200, createdSeller, "buyer registered successfully !!!")
+        new ApiResponse(200, createdBuyer, "buyer registered successfully !!!")
     );
 });
 
@@ -188,10 +189,10 @@ const changeCurrentBuyerPassword = asyncHandler(async (req, res) => {
 
 const addProductRequest = asyncHandler(async (req, res) => {
 
-    const { buyer_email, buyer_product_picture, tags, title } = req.body;
+    const { buyer_email, buyer_product_picture, tags, title, description } = req.body;
 
     if (
-        [buyer_email, buyer_product_picture, tags, title].some((field) => field?.trim() === "")
+        [buyer_email, title].some((field) => field?.trim() === "")
     ) {
         throw new ApiError(400, "All fields are required...");
     }
@@ -200,7 +201,8 @@ const addProductRequest = asyncHandler(async (req, res) => {
         buyer_email,
         buyer_product_picture,
         tags,
-        title
+        title,
+        description
     });
 
     const createdProduct = await PreviousDeals.findById(product._id);
@@ -213,8 +215,6 @@ const addProductRequest = asyncHandler(async (req, res) => {
         new ApiResponse(200, createdProduct, "Product Request Notification Sent !!!")
     );
 });
-
-
 
 const updateBuyerImage = asyncHandler(async (req, res) => {
     const imageLocalPath = req.file?.path; 
