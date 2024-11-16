@@ -26,6 +26,9 @@ import ProductCard from "./ProductCard.jsx";
 import ProductPage from "./ProductPage.jsx";
 import InDealsCard from "./InDealsCard.jsx";
 import InDealsPage from "./InDealsPage.jsx";
+import ChatSidebar from "./ChatSideBar.jsx";
+import ChatBot from "./ChatBot.jsx";
+import ChatPage from "./ChatPage.jsx";
 export {
     Button,
     Container,
@@ -55,4 +58,7 @@ export {
     ProductPage,
     InDealsCard,
     InDealsPage,
+    ChatSidebar,
+    ChatBot,
+    ChatPage,
 };

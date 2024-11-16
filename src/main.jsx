@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css';
 import { LoginForm, SellerPage, SignupForm, Home, PageNotFound } from './pages/MainPage.jsx';
-import { InDealsPage, PurchasesPage,OutDealsPage,ProductPage, SellerDashboard, BuyerDashboard, BuyerProfilePage, SellerProfilePage, AddProduct } from './components/mainComponent.jsx'
+import { ChatPage, InDealsPage, PurchasesPage,OutDealsPage,ProductPage, SellerDashboard, BuyerDashboard, BuyerProfilePage, SellerProfilePage, AddProduct } from './components/mainComponent.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import BuyerPage from './pages/BuyerPage.jsx';
 
@@ -18,7 +18,7 @@ const router = createBrowserRouter(
         <Route path='' element={<SellerDashboard />} />
         <Route path='dashboard' element={<SellerDashboard />} />
         <Route path='products' element={<ProductPage/>} />
-        <Route path='chats' element={<>Chats Page Under construction</>} />
+        <Route path='chats' element={<ChatPage/>} />
         <Route path='out-deals' element={<OutDealsPage/>} />
         <Route path='sells' element={<PurchasesPage />} />
         <Route path='your-info' element={<SellerProfilePage />} />
@@ -27,7 +27,7 @@ const router = createBrowserRouter(
         <Route path='' element={<BuyerDashboard />} />
         <Route path='dashboard' element={<BuyerDashboard />} />
         <Route path='add-products' element={<AddProduct />} />
-        <Route path='chats' element={<>Chats Page Under construction</>} />
+        <Route path='chats' element={<ChatPage/>} />
         <Route path='in-deals' element={<InDealsPage/>} />
         <Route path='purchases' element={<PurchasesPage />} />
         <Route path='your-info' element={<BuyerProfilePage />} />
