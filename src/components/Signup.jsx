@@ -21,7 +21,7 @@ function Signup() {
                     'Content-Type': 'application/json',
                 },
             };
-    
+
             const response = await fetch(`http://localhost:8000/api/v1/${role}/register`, requestOptions);
     
             if (!response.ok)

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BASE_URL } from '../Constants';
 
 const AddProduct = () => {
   const [productData, setProductData] = useState({
@@ -6,6 +7,7 @@ const AddProduct = () => {
     description: '',
     size: '',
     tags: [], 
+    images: [],
   });
 
   const Tag = ({ tag, onDelete }) => (
@@ -61,7 +63,7 @@ const AddProduct = () => {
 
   // Handle image upload
   const handleImageUpload = (e, index) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0].path;
     const updatedImages = [...images];
     updatedImages[index] = file;
     setImages(updatedImages);
@@ -75,10 +77,36 @@ const AddProduct = () => {
   };
 
   // Handle form submission
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log('Product Data:', productData);
-    console.log('Uploaded Images:', images.filter(Boolean)); // Filter out null values
-    // You can add further logic to save the data to your backend or state management system
+    console.log('Uploaded Images:', images.filter(Boolean));
+
+      try {
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({
+              title: productData.title,
+              buyer_email: "6732fc0a6288111736f154d5",
+              description: productData.description,
+              size: productData.size,
+              tags: productData.tags,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        const response = await fetch(`${BASE_URL}/buyer/add-product`, requestOptions);
+
+        if (!response.ok)
+            throw new Error("Products request failed");
+
+        // const productRequestsCollection = await response.json();
+
+        // setProductsCollection(productRequestsCollection.data.totalOrders);
+    } catch (error) {
+        console.log(error.message);
+    }
   };
 
   return (

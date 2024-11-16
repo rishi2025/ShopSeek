@@ -17,6 +17,7 @@ const previousDealsSchema = new Schema({
 
     seller_product_picture: {
         type: String,                  // cludinary url
+        default: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3ANo-Image-Placeholder.svg&psig=AOvVaw1i9JdbfjH73xfvhHkrJ0lo&ust=1731487509140000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLC2mOOz1okDFQAAAAAdAAAAABAE",
     },
 
     buyer_product_picture: {
@@ -35,7 +36,16 @@ const previousDealsSchema = new Schema({
 
     status: {
         type: String,       // Pending, Confirm, Delivered
+        default: "Pending",
         require: true,
+    },
+
+    description: {
+        type: String, 
+    },
+
+    size: {
+        type: String, 
     },
 
     title: {
