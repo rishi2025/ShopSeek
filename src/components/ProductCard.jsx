@@ -11,6 +11,7 @@ const ProductCard = ({
 
   const displayedTags = tags.length > 3 ? tags.slice(0, 3) : tags; // Show only the first 3 tags
   const showMoreTags = tags.length > 3; // Flag to show "..."
+  console.log(imageUrl);
 
   return (
     <div className="bg-gradient-to-b from-violet-300 to-violet-400 rounded-lg p-6 shadow-lg flex flex-col items-center space-y-4 text-center text-white max-h-[30rem] max-w-[18rem] mx-4">

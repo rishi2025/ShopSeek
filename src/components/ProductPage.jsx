@@ -54,11 +54,12 @@ return(
   <Container className='flex flex-row flex-wrap bg-[#F1EAFF] gap-y-8 h-[45.5rem] overflow-y-scroll'>
     {
       productsCollection?.map((element, index) => {
+        // console.log(element.imageUrl);
         return (
           <ProductCard 
           key={index}
           title={element.title}
-          imageUrl={element.buyer_product_picture}
+          imageUrl={element.imageUrl}
           buttonText="Buy Now"
           tags={element.tags}
           revertedOn={element.createdAt}

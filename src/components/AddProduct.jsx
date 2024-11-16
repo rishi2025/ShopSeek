@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BASE_URL } from '../Constants';
 
+
 const AddProduct = () => {
   const [productData, setProductData] = useState({
     title: '',
@@ -63,7 +64,7 @@ const AddProduct = () => {
 
   // Handle image upload
   const handleImageUpload = (e, index) => {
-    const file = e.target.files[0].path;
+    const file = e.target.files[0];
     const updatedImages = [...images];
     updatedImages[index] = file;
     setImages(updatedImages);
@@ -76,36 +77,81 @@ const AddProduct = () => {
     setImages(updatedImages);
   };
 
-  // Handle form submission
   const handleSubmit = async () => {
     console.log('Product Data:', productData);
-    console.log('Uploaded Images:', images.filter(Boolean));
+    console.log('Uploaded Images:', images.filter(Boolean));  // Ensure you only pass valid images
+  
+    try {
 
-      try {
-        const requestOptions = {
-            method: 'POST',
-            body: JSON.stringify({
-              title: productData.title,
-              buyer_email: "6732fc0a6288111736f154d5",
-              description: productData.description,
-              size: productData.size,
-              tags: productData.tags,
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
+      // Upload images to the server and get Cloudinary URLs
+      const imageUrls = await uploadImagesToServer(images);
+  
+      if (imageUrls.length === 0) {
+        throw new Error('No images uploaded.');
+      }
 
-        const response = await fetch(`${BASE_URL}/buyer/add-product`, requestOptions);
+      const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify({
+          title: productData.title,
+          buyer_email: "6732fc0a6288111736f154d5",
+          description: productData.description,
+          size: productData.size,
+          tags: productData.tags,
+          buyer_product_picture: imageUrls[0],  // the first uploaded image
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+  
+      const response = await fetch(`${BASE_URL}/buyer/add-product`, requestOptions);
+  
+      if (!response.ok)
+        throw new Error('Product request failed');
 
-        if (!response.ok)
-            throw new Error("Products request failed");
+      setProductData({
+        title: '',
+        description: '',
+        size: '',
+        tags: [],
+        images: [],
+      });
 
-        // const productRequestsCollection = await response.json();
-
-        // setProductsCollection(productRequestsCollection.data.totalOrders);
+      setNewTag('');
+      setImages([null, null, null]);
+  
     } catch (error) {
-        console.log(error.message);
+      console.log(error.message);
+    }
+  };
+
+  const uploadImagesToServer = async (images) => {
+    try {
+      const uploadPromises = images.map(async (image) => {
+
+        const formData = new FormData();
+        formData.append('image', image);  // Assuming 'image' is the file input field name
+  
+        try {
+          const res = await fetch(`${BASE_URL}/upload`, {
+            method: 'POST',
+            body: formData,
+          });
+          const data = await res.json();
+          return data.url;
+        } catch (err) {
+          console.error('Error uploading image:', err);
+          return null;
+        }
+      });
+  
+      // Wait for all image uploads to complete and filter out nulls if upload fails
+      const uploadedImageUrls = await Promise.all(uploadPromises);
+      return uploadedImageUrls.filter(Boolean);  // Filter out failed uploads (null values)
+    } catch (err) {
+      console.error('Error uploading images:', err);
+      return [];
     }
   };
 
@@ -141,7 +187,7 @@ const AddProduct = () => {
                   type="file"
                   accept="image/*"
                   className="hidden"
-                  onChange={(e) => handleImageUpload(e, 0)}
+                    onChange={(e) => handleImageUpload(e, 0)}
                 />
               </label>
             )}

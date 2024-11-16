@@ -3,6 +3,8 @@ import express, { urlencoded } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { S_LIMIT } from "./constants.js";
+import { upload } from "./middlewares/multer.middleware.js";
+import { uploadCloudinary } from "./utils/cloudinary.js";
 
 
 const app = express();
@@ -32,5 +34,25 @@ app.use("/api/v1/seller", outDealRouter);
 app.use("/api/v1/seller", productRequestsRoute);
 
 app.use("/api/v1/buyer", buyerRouter);
+
+app.use('/api/v1/upload', upload.single('image'), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+
+        const cloudinaryResponse = await uploadCloudinary(req.file.path);
+
+        if (!cloudinaryResponse) {
+            return res.status(500).json({ error: 'Failed to upload to Cloudinary' });
+        }
+
+        res.json({ url: cloudinaryResponse.secure_url });
+
+    } catch (error) {
+        console.error('Error during file upload:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 export { app };
