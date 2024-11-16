@@ -22,7 +22,6 @@ const getProductRequests = asyncHandler(async (req, res) => {
         tags: { $in: seller.tags },  
         status: "Pending"           
     })
-    .select('buyer_product_picture title tags')
     .lean();
 
     if (!productRequests) {
