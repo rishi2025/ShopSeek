@@ -56,6 +56,10 @@ const previousDealsSchema = new Schema({
         type: Number,
     },
 
+    details: {
+        type: String,
+    },
+
     review: {
         type: String,
     },

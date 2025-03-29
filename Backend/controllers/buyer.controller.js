@@ -5,6 +5,7 @@ import { PreviousDeals } from '../models/previousDeals.model.js';
 import { BuyerDetails } from "../models/buyerDetails.model.js";
 import { uploadCloudinary } from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
+import { OutDeals } from '../models/outDeals.model.js';
 
 const generateBuyerAccessAndRefreshTokens = async (buyerId) => {
     try {
@@ -279,6 +280,44 @@ const updateBuyerInfo = asyncHandler(async (req, res) => {
     );
 });
 
+const getInDeals = asyncHandler(async (req, res) => {
+    const { buyerId } = req.body;
+
+    if (!buyerId) {
+        throw new ApiError(400, "Buyer ID is required.");
+    }
+
+    // Fetch products associated with the buyer
+    const products = await PreviousDeals.find({ buyer_email: buyerId });
+
+    if (!products || products.length === 0) {
+        throw new ApiError(404, "No product-deals found for this buyer.");
+    }
+
+    const productIds = products.map(product => product._id.toString());
+
+    // Fetch in-deals associated with the products
+    const inDeals = await OutDeals.find({ product_id: { $in: productIds } });
+
+    if (!inDeals || inDeals.length === 0) {
+        throw new ApiError(404, "No in-deals found for this buyer.");
+    }
+
+    // Map in-deals with their corresponding product details
+    const inDealsWithProductDetails = inDeals.map(inDeal => {
+        const product = products.find(product => product._id.toString() === inDeal.product_id.toString());
+        return {
+            inDeal,
+            product
+        };
+    });
+
+    // Return response with in-deals and product details
+    return res.status(200).json(
+        new ApiResponse(200, inDealsWithProductDetails, "In-deals with product details fetched successfully.")
+    );
+});
+
 export {
     registerBuyer,
     loginBuyer,
@@ -287,5 +326,6 @@ export {
     changeCurrentBuyerPassword,
     addProductRequest,
     updateBuyerImage,
-    updateBuyerInfo
+    updateBuyerInfo,
+    getInDeals
 };

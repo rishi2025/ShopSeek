@@ -6,6 +6,7 @@ import { uploadCloudinary } from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import jwt from "jsonwebtoken";
 import { PreviousDeals } from '../models/previousDeals.model.js';
+import { OutDeals } from '../models/outDeals.model.js';
 
 const generateAccessAndRefreshTokens = async (sellerId) => {
     try {
@@ -424,6 +425,38 @@ const getTotalOrders = asyncHandler(async (req, res) => {
 
 
 
+const acceptProductRequest = asyncHandler(async (req, res) => {
+
+    const { id, seller_email, seller_product_picture, price, description } = req.body;
+
+    if (
+        [id, seller_email, seller_product_picture, price].some((field) => field?.trim() === "")
+    ) {
+        throw new ApiError(400, "All fields are required...");
+    }
+
+    const product = await OutDeals.create({
+        seller_email,
+        product_id: id,
+        seller_email,
+        seller_product_picture,
+        price,
+        description
+    });
+
+    const acceptedRequest = await OutDeals.findById(product._id);
+
+    if (!acceptedRequest)
+        throw new ApiError(500, "Something went wrong while creating product request...");
+
+    // return response
+    return res.status(201).json(
+        new ApiResponse(200, acceptedRequest, "Product Request Notification Sent !!!")
+    );
+});
+
+
+
 export {
     registerSeller,
     loginSeller,
@@ -435,5 +468,6 @@ export {
     updateSellerCoverImage,
     getAllDeals,
     updateSellerInformation,
-    getTotalOrders
+    getTotalOrders,
+    acceptProductRequest
 };

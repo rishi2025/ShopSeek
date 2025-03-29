@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { BASE_URL } from '../Constants';
 
 const ProductCard = ({
+  id = "66f65e2969020681ed755dc3",
   title = "NIKE SHOES",
   imageUrl = "https://via.placeholder.com/100", // Default placeholder image
   tags = ["Shoes", "Shoes", "Shoes"],
@@ -61,17 +62,19 @@ const ProductCard = ({
       const requestOptions = {
         method: 'POST',
         body: JSON.stringify({
+          id,
+          seller_email: "66f65e2969020681ed755dc3",
           title,
           price,
-          additionalDetails,
-          images: imageUrls,
+          description: additionalDetails,
+          seller_product_picture: imageUrls[0],
         }),
         headers: {
           'Content-Type': 'application/json',
         },
       };
 
-      const response = await fetch(`${BASE_URL}/seller/accept-request`, requestOptions);
+      const response = await fetch(`${BASE_URL}/seller/accept-product-request`, requestOptions);
 
       if (!response.ok) {
         throw new Error('Failed to accept request');
@@ -91,15 +94,17 @@ const ProductCard = ({
       const uploadPromises = images
         .filter(Boolean)
         .map(async (image) => {
-          const formData = new FormData();
-          formData.append('image', image);
+          if (image) {
+            const formData = new FormData();
+            formData.append('image', image);
 
-          const res = await fetch(`${BASE_URL}/upload`, {
-            method: 'POST',
-            body: formData,
-          });
-          const data = await res.json();
-          return data.url;
+            const res = await fetch(`${BASE_URL}/upload`, {
+              method: 'POST',
+              body: formData,
+            });
+            const data = await res.json();
+            return data.url;
+          }
         });
 
       const uploadedImageUrls = await Promise.all(uploadPromises);

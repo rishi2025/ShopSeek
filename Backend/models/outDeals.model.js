@@ -3,24 +3,24 @@ import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const outDealsSchema = new Schema({
 
-    buyer_email: {
+    seller_email: {
         type: Schema.Types.ObjectId,
-        ref: "Buyer",
+        ref: "Seller",
         default: "Null",
     },
 
-    buyer_product_picture: {
+    product_id: {
+        type: Schema.Types.ObjectId,
+        ref: "Seller",
+        default: "Null",
+    },
+
+    seller_product_picture: {
         type: String,                  // cludinary url
     },
 
-    tags: [
-        {
-            type: String,
-        }
-    ],
-
-    title: {
-        type: String,
+    price: {
+        type: Number,
     },
 
     description: {
