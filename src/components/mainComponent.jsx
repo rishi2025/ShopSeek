@@ -29,6 +29,8 @@ import InDealsPage from "./InDealsPage.jsx";
 import ChatSidebar from "./ChatSideBar.jsx";
 import ChatBot from "./ChatBot.jsx";
 import ChatPage from "./ChatPage.jsx";
+import PaymentModal from "./PaymentModal.jsx";
+
 export {
     Button,
     Container,
@@ -61,4 +63,5 @@ export {
     ChatSidebar,
     ChatBot,
     ChatPage,
+    PaymentModal,
 };
