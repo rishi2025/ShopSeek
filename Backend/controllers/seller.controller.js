@@ -394,8 +394,8 @@ const updateSellerInformation = asyncHandler(async (req, res) => {
         const update = await seller.save();
 
         if (update) {
-            return res.status(201).json(
-                new ApiResponse(201, update, "Seller information updated successfully.")
+            return res.status(200).json(
+                new ApiResponse(200, update, "Seller information updated successfully.")
             );
         } else {
             throw new ApiError(500, "Failed to update seller information.");

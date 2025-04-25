@@ -127,6 +127,7 @@ const SellerProfilePage = () => {
                         placeholder="Enter a phone number"
                         className="mt-2 block w-full px-4 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" 
                         defaultValue={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)} 
                     />
                 </div>
                 <div className="mb-6">
@@ -136,6 +137,7 @@ const SellerProfilePage = () => {
                         placeholder='Address...'
                         className="mt-2 block w-full px-4 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm h-32"
                         defaultValue={address}
+                        onChange={(e) => setAddress(e.target.value)} 
                     ></textarea>
                 </div>
                 <div className="mb-6">
