@@ -11,7 +11,7 @@ const outDealsSchema = new Schema({
 
     product_id: {
         type: Schema.Types.ObjectId,
-        ref: "Seller",
+        ref: "PreviousDeals",
         default: "Null",
     },
 
@@ -25,6 +25,13 @@ const outDealsSchema = new Schema({
 
     description: {
         type: String,
+    },
+
+    status: {
+        type: String,
+        enum: ["Pending", "Confirmed", "Rejected", "Delivered"],
+        default: "Pending",
+        require: true,
     },
 },
     {

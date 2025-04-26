@@ -441,7 +441,8 @@ const acceptProductRequest = asyncHandler(async (req, res) => {
         seller_email,
         seller_product_picture,
         price,
-        description
+        description,
+        status: "Pending",
     });
 
     const acceptedRequest = await OutDeals.findById(product._id);

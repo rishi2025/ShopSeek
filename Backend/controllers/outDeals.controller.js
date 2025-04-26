@@ -2,6 +2,7 @@ import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from "../utils/ApiError.js";
 import { PreviousDeals } from "../models/previousDeals.model.js";
 import { Seller } from "../models/seller.model.js";
+import { Buyer } from "../models/buyer.model.js";
 import { uploadCloudinary } from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import { OutDeals } from '../models/outDeals.model.js';
@@ -13,25 +14,53 @@ const getOutGoingDeals = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Email not found");
     }
 
-    const outGoingDeals = OutDeals.find({
+    const outGoingDeals = await OutDeals.find({
         seller_email: sellerEmail,
-        status: {
-            $or: ["Confirmed", "Pending"]
-        }
+        $or: [
+            { status: "Confirmed" },
+            { status: "Pending" }
+        ]
     });
 
     if (!outGoingDeals) {
         throw new ApiError(500, "Internal Server Error, could not fetch OutDeals");
     }
 
+    const productIds = outGoingDeals?.map(deal => deal.product_id);
+    const previousDeals = await PreviousDeals.find({
+        _id: { $in: productIds }
+    });
+
+    const buyerEmails = previousDeals?.map(deal => deal.buyer_email);
+    const buyers = await Buyer.find({
+        _id: { $in: buyerEmails }
+    });
+
+    const sellers = await Seller.find({
+        _id: sellerEmail
+    });
+
+    const enrichedOutGoingDeals = outGoingDeals.map(deal => {
+        const correspondingPreviousDeal = previousDeals?.find(prevDeal => prevDeal._id.toString() === deal.product_id.toString());
+        const buyerDetails = buyers?.find(buyer => buyer._id.toString() === correspondingPreviousDeal?.buyer_email.toString());
+        const sellerDetails = sellers?.find(seller => seller._id.toString() === sellerEmail);
+
+        return {
+            ...deal.toObject(),
+            productDetails: correspondingPreviousDeal ? {
+                ...correspondingPreviousDeal.toObject(),
+                buyerDetails: buyerDetails || null,
+                sellerDetails: sellerDetails || null
+            } : null
+        };
+    });
+
     return res.status(200)
         .json(new ApiResponse(
             200,
-            {
-                outGoingDeals
-            },
-            "OutgoingDeals are fetched successfully...",
-        ))
+            enrichedOutGoingDeals,
+            "OutgoingDeals and PreviousDeals are fetched successfully...",
+        ));
 });
 
 const createDeal = asyncHandler(async (req, res) => {

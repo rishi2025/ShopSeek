@@ -187,6 +187,9 @@ const changeCurrentBuyerPassword = asyncHandler(async (req, res) => {
         ));
 });
 
+function generateRandomId() {
+    return Math.random().toString(36).substring(2, 15);
+}
 
 const addProductRequest = asyncHandler(async (req, res) => {
 
@@ -296,7 +299,6 @@ const getInDeals = asyncHandler(async (req, res) => {
 
     const productIds = products.map(product => product._id.toString());
 
-    // Fetch in-deals associated with the products
     const inDeals = await OutDeals.find({ product_id: { $in: productIds } });
 
     if (!inDeals || inDeals.length === 0) {
